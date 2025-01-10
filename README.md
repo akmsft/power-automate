@@ -1,2 +1,2 @@
 # power-automate
-Tips, pre-built solutions, etc. for Power Automate development.
+This repository contains a collection of tips, best-practices, pre-built solutions, etc. for Power Automate development.
