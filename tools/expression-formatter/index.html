@@ -1,0 +1,3328 @@
+<!doctype html>
+<!--
+Original formatter code: MIT License
+Copyright (c) 2026 Aaron Kuhn
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+Microsoft names and logos are trademarks of Microsoft; no trademark rights
+are granted by this license. Embedded logo source:
+https://commons.wikimedia.org/wiki/File:Microsoft_Power_Automate.svg
+Community-built tool. Not an official Microsoft product.
+-->
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Power Automate Expression Formatter</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTYiIGhlaWdodD0iOTYiIHZpZXdCb3g9IjAgMCA5NiA5NiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGRlZnM+CjxmaWx0ZXIgaWQ9ImZpbHRlcjBfZiI+CjxmZUZsb29kIGZsb29kLW9wYWNpdHk9IjAiIHJlc3VsdD0iQmFja2dyb3VuZEltYWdlRml4Ii8+CjxmZUJsZW5kIG1vZGU9Im5vcm1hbCIgaW49IlNvdXJjZUdyYXBoaWMiIGluMj0iQmFja2dyb3VuZEltYWdlRml4IiByZXN1bHQ9InNoYXBlIi8+CjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjAuNCIgcmVzdWx0PSJlZmZlY3QxX2ZvcmVncm91bmRCbHVyIi8+CjwvZmlsdGVyPgo8ZmlsdGVyIGlkPSJmaWx0ZXIxX2YiPgo8ZmVGbG9vZCBmbG9vZC1vcGFjaXR5PSIwIiByZXN1bHQ9IkJhY2tncm91bmRJbWFnZUZpeCIvPgo8ZmVCbGVuZCBtb2RlPSJub3JtYWwiIGluPSJTb3VyY2VHcmFwaGljIiBpbjI9IkJhY2tncm91bmRJbWFnZUZpeCIgcmVzdWx0PSJzaGFwZSIvPgo8ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPSI0IiByZXN1bHQ9ImVmZmVjdDFfZm9yZWdyb3VuZEJsdXIiLz4KPC9maWx0ZXI+CjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQwX2xpbmVhciIgeDE9IjQzIiB5MT0iNTUiIHgyPSIyOSIgeTI9IjEwIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIHN0b3AtY29sb3I9IiMwRDM2QTUiLz4KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMTE1MkQ0Ii8+CjwvbGluZWFyR3JhZGllbnQ+CjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQxX2xpbmVhciIgeDE9IjQ2IiB5MT0iMTAiIHgyPSI0NiIgeTI9Ijg2IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIHN0b3AtY29sb3I9IiM4NENBRkYiLz4KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNjFCMUZCIi8+CjwvbGluZWFyR3JhZGllbnQ+CjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQyX2xpbmVhciIgeDE9IjM3LjUiIHkxPSIxMCIgeDI9IjM3LjUiIHkyPSI4NiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgo8c3RvcCBzdG9wLWNvbG9yPSIjM0I5MEY1Ii8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzJBNzhFRSIvPgo8L2xpbmVhckdyYWRpZW50Pgo8Y2xpcFBhdGggaWQ9ImNsaXAwIj4KPHJlY3Qgd2lkdGg9Ijk2IiBoZWlnaHQ9Ijk2IiBmaWxsPSJ3aGl0ZSIvPgo8L2NsaXBQYXRoPgo8Y2xpcFBhdGggaWQ9ImNsaXAxIj4KPHJlY3Qgd2lkdGg9Ijk2IiBoZWlnaHQ9Ijk2IiBmaWxsPSJ3aGl0ZSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+CjxnIGNsaXAtcGF0aD0idXJsKCNjbGlwMCkiPgo8ZyBjbGlwLXBhdGg9InVybCgjY2xpcDEpIj4KPG1hc2sgaWQ9Im1hc2swIiBtYXNrLXR5cGU9ImFscGhhIiBtYXNrVW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4PSItMSIgeT0iMTAiIHdpZHRoPSI5NyIgaGVpZ2h0PSI3NiI+CjxwYXRoIGQ9Ik02MS4yMTE2IDEwQzYyLjM0OTYgMTAgNjMuNDMzNyAxMC40ODQ3IDY0LjE5MjUgMTEuMzMyOEw5NC42MTM2IDQ1LjMzMjhDOTUuOTcyMyA0Ni44NTE0IDk1Ljk3MjMgNDkuMTQ4NiA5NC42MTM2IDUwLjY2NzJMNjQuMTkyNSA4NC42NjcyQzYzLjQzMzcgODUuNTE1MyA2Mi4zNDk2IDg2IDYxLjIxMTYgODZIMy45NDYzNEMwLjQ4ODc3NyA4NiAtMS4zNDAxMiA4MS45MDk1IDAuOTY1MzY2IDc5LjMzMjhMMjkgNDhMMC45NjUzNjYgMTYuNjY3MkMtMS4zNDAxMiAxNC4wOTA1IDAuNDg4Nzc3IDEwIDMuOTQ2MzQgMTBINjEuMjExNloiIGZpbGw9IndoaXRlIi8+CjwvbWFzaz4KPGcgbWFzaz0idXJsKCNtYXNrMCkiPgo8cGF0aCBkPSJNNjMgMTBMMjkgNDhMLTUgMTBINjNaIiBmaWxsPSJ1cmwoI3BhaW50MF9saW5lYXIpIi8+CjxnIGZpbHRlcj0idXJsKCNmaWx0ZXIwX2YpIj4KPHBhdGggZD0iTTYzIDEwLjRMLTUgODYuNEg2M0w5NyA0OC40TDYzIDEwLjRaIiBmaWxsPSJibGFjayIgZmlsbC1vcGFjaXR5PSIwLjI0Ii8+CjwvZz4KPGcgZmlsdGVyPSJ1cmwoI2ZpbHRlcjFfZikiPgo8cGF0aCBkPSJNNjMgMTJMLTUgODhINjNMOTcgNTBMNjMgMTJaIiBmaWxsPSJibGFjayIgZmlsbC1vcGFjaXR5PSIwLjMyIi8+CjwvZz4KPHBhdGggZD0iTS01IDg2TDYzIDEwTDk3IDQ4TDYzIDg2SC01WiIgZmlsbD0idXJsKCNwYWludDFfbGluZWFyKSIvPgo8cGF0aCBkPSJNLTUgODZMNjMgMTBMODAgMjlMMjkgODZILTVaIiBmaWxsPSJ1cmwoI3BhaW50Ml9saW5lYXIpIi8+CjwvZz4KPC9nPgo8L2c+Cjwvc3ZnPgo=">
+  <script>
+    const themeStorageKey = "power-automate-expression-formatter.theme.v1";
+    const themePreferenceLifetime = 30 * 24 * 60 * 60 * 1000;
+    let themeStorageMessage = "";
+    function isThemeStorageError(error) {
+      return error instanceof DOMException &&
+        (error.name === "SecurityError" || error.name === "QuotaExceededError");
+    }
+    // Read before painting; use light unless an unexpired explicit choice exists.
+    (() => {
+      let theme = "light";
+      try {
+        const saved = localStorage.getItem(themeStorageKey);
+        if (saved !== null) {
+          const preference = JSON.parse(saved);
+          if (preference && (preference.theme === "light" || preference.theme === "dark") &&
+              Number.isFinite(preference.expiresAt)) {
+            if (preference.expiresAt > Date.now()) theme = preference.theme;
+          } else {
+            console.warn("Invalid saved theme preference; using light.");
+            themeStorageMessage = "Saved theme preference was invalid. Light theme is active.";
+          }
+        }
+      } catch (error) {
+        if (!(error instanceof SyntaxError) && !isThemeStorageError(error)) throw error;
+        console.warn("Unable to read the theme preference.", error);
+        themeStorageMessage = "Theme preference could not be loaded. Light theme is active.";
+      }
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+  <style>
+    :root {
+      color-scheme: only light;
+      --cp-bg: #f5f8fb;
+      --cp-bg-elevated: #ffffff;
+      --cp-surface: #ffffff;
+      --cp-surface-soft: #eff6fc;
+      --cp-border: #dce5ed;
+      --cp-border-strong: #a9bac9;
+      --cp-text: #0e1726;
+      --cp-text-muted: #475569;
+      --cp-text-soft: #526477;
+      --cp-accent: #0078d4;
+      --cp-accent-hover: #0067b8;
+      --cp-accent-soft: rgba(0, 120, 212, 0.08);
+      --cp-accent-fg: #ffffff;
+      --cp-success: #107c41;
+      --cp-copy-success: rgb(0, 66, 117);
+      --cp-help-backdrop: rgba(14, 23, 38, 0.16);
+      --cp-danger: #b91c1c;
+      --cp-danger-soft: #fff1f0;
+      --cp-danger-border: #e6b8ba;
+      --cp-transparent: transparent;
+      --cp-warning: #f59e0b;
+      --cp-warning-text: #8a4b08;
+      --cp-warning-soft: #fff8eb;
+      --cp-link: #0078d4;
+      --cp-shadow: 0 2px 4px rgba(14, 23, 38, 0.08);
+      --cp-overlay: rgba(255, 255, 255, 0.8);
+      --cp-panel: rgba(255, 255, 255, 0.86);
+      --cp-panel-strong: rgba(255, 255, 255, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.55);
+      --cp-highlight: rgba(0, 120, 212, 0.18);
+    }
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --cp-bg: #181818;
+      --cp-bg-elevated: #202020;
+      --cp-surface: #262626;
+      --cp-surface-soft: #303030;
+      --cp-border: #404040;
+      --cp-border-strong: #666666;
+      --cp-text: #f0f0f0;
+      --cp-text-muted: #c2c2c2;
+      --cp-text-soft: #aeb8c4;
+      --cp-accent: #75baff;
+      --cp-accent-hover: #a3d0ff;
+      --cp-accent-soft: #102b43;
+      --cp-accent-fg: #081b2b;
+      --cp-success: #79d9a4;
+      --cp-copy-success: #75baff;
+      --cp-help-backdrop: rgba(0, 0, 0, 0.5);
+      --cp-danger: #ffaaa7;
+      --cp-danger-soft: #472727;
+      --cp-danger-border: #965653;
+      --cp-warning: #ffca79;
+      --cp-warning-text: #ffca79;
+      --cp-warning-soft: #3c3020;
+      --cp-link: #75baff;
+      --cp-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+      --cp-overlay: #262626;
+      --cp-panel: #262626;
+      --cp-panel-strong: #262626;
+      --cp-sheen: rgba(255, 255, 255, 0.04);
+      --cp-highlight: #102b43;
+    }
+    html[data-theme="dark"] textarea::placeholder {
+      color: var(--cp-text-soft);
+      opacity: 1;
+    }
+    html[data-theme="dark"] ::selection {
+      background: var(--cp-highlight);
+      color: var(--cp-text);
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background: var(--cp-bg);
+      color: var(--cp-text);
+      font-family: "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.5;
+    }
+    main {
+      width: min(1280px, calc(100% - 64px));
+      margin: 24px auto;
+    }
+    header {
+      margin-bottom: 20px;
+    }
+    .masthead {
+      border-bottom: 1px solid var(--cp-border);
+      background: var(--cp-surface);
+    }
+    .masthead-inner {
+      width: min(1280px, calc(100% - 64px));
+      min-height: 64px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: nowrap;
+      padding: 12px 0;
+    }
+    .product-name {
+      white-space: nowrap;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+    .tool-name {
+      border-left: 1px solid var(--cp-border-strong);
+      padding-left: 16px;
+      color: var(--cp-text-muted);
+      font-size: 0.875rem;
+    }
+    .local-badge {
+      margin-left: auto;
+      color: var(--cp-text-muted);
+      font-size: 0.8125rem;
+    }
+    #theme-toggle {
+      flex-shrink: 0;
+      min-height: 32px;
+      width: 66px;
+      padding: 0;
+      border: 0;
+      border-radius: 18px;
+      background: var(--cp-transparent);
+      color: var(--cp-text-muted);
+      vertical-align: middle;
+    }
+    #theme-toggle:hover { background: var(--cp-surface-soft); }
+    #theme-toggle:focus-visible { outline-offset: 3px; }
+    .theme-track {
+      position: relative;
+      display: block;
+      width: 66px;
+      height: 30px;
+      border: 1px solid var(--cp-border-strong);
+      border-radius: 18px;
+      background: var(--cp-surface-soft);
+      transition: background-color 160ms ease, border-color 160ms ease;
+    }
+    .theme-thumb {
+      position: absolute;
+      z-index: 1;
+      top: 2px;
+      left: 2px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--cp-surface);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.28);
+      transition: left 160ms ease, background-color 160ms ease;
+    }
+    #theme-toggle[aria-checked="true"] .theme-track {
+      border-color: var(--cp-accent);
+      background: var(--cp-accent);
+    }
+    #theme-toggle[aria-checked="true"] .theme-thumb {
+      left: 38px;
+      background: var(--cp-accent-fg);
+    }
+    .theme-symbol {
+      position: absolute;
+      top: 6px;
+      z-index: 2;
+      width: 16px;
+      height: 16px;
+      pointer-events: none;
+      transition: color 160ms ease;
+    }
+    .theme-symbol svg { display: block; width: 16px; height: 16px; }
+    .theme-symbol.sun { left: 6px; color: var(--cp-text-soft); }
+    .theme-symbol.moon { right: 6px; color: var(--cp-accent); }
+    #theme-toggle[aria-checked="true"] .theme-symbol.sun { color: var(--cp-accent-fg); }
+    #theme-toggle[aria-checked="true"] .theme-symbol.moon { color: var(--cp-accent); }
+    @media (prefers-reduced-motion: reduce) {
+      .theme-track, .theme-thumb, .theme-symbol { transition: none; }
+    }
+    .theme-notice {
+      width: min(1280px, calc(100% - 64px));
+      margin: 0 auto;
+      padding-bottom: 12px;
+      color: var(--cp-warning-text);
+      font-size: 0.8125rem;
+    }
+    .product-logo {
+      width: 40px;
+      height: 40px;
+      flex: 0 0 40px;
+      object-fit: contain;
+    }
+    h1 {
+      margin: 0 0 6px;
+      font-family: "Segoe UI Variable Display", "Segoe UI", sans-serif;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 500;
+      letter-spacing: -0.035em;
+      line-height: 1.12;
+    }
+    .intro,
+    .privacy {
+      color: var(--cp-text-muted);
+    }
+    .intro {
+      margin: 0;
+      font-size: 0.9375rem;
+      line-height: 1.6;
+    }
+    .privacy {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+      font-size: 0.8125rem;
+    }
+    .privacy::before {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--cp-success);
+      content: "";
+    }
+    .panels {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0;
+      border: 1px solid var(--cp-border);
+      border-radius: 12px;
+      background: var(--cp-surface);
+      overflow: hidden;
+    }
+    .panel {
+      min-width: 0;
+      padding: 20px;
+      background: var(--cp-surface);
+      display: flex;
+      flex-direction: column;
+    }
+    .panel + .panel {
+      border-left: 1px solid var(--cp-border);
+    }
+    .panel-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 40px;
+      flex-shrink: 0;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    h2 {
+      margin: 0;
+      font-size: 1.125rem;
+      font-weight: 600;
+    }
+    .counter {
+      color: var(--cp-text-muted);
+      font-size: 0.8125rem;
+      white-space: nowrap;
+    }
+    textarea {
+      display: block;
+      width: 100%;
+      min-height: 360px;
+      resize: vertical;
+      padding: 14px;
+      border: 1px solid var(--cp-border-strong);
+      border-radius: 0.625rem;
+      background: var(--cp-bg-elevated);
+      color: var(--cp-text);
+      font: 0.9rem/1.55 Consolas, "Courier New", Courier, monospace;
+      tab-size: 2;
+    }
+    textarea:focus-visible,
+    button:focus-visible,
+    .result-view:focus-visible,
+    summary:focus-visible {
+      outline: 2px solid var(--cp-accent);
+      outline-offset: 2px;
+    }
+    textarea[readonly] {
+      background: var(--cp-bg-elevated);
+    }
+    .source-editor,
+    .result-editor {
+      position: relative;
+      --source-gutter-width: calc(2ch + 20px);
+      font: 0.9rem/1.55 Consolas, "Courier New", Courier, monospace;
+    }
+    .result-editor.has-line-numbers .result-view {
+      padding-left: calc(var(--source-gutter-width) + 14px);
+    }
+    .source-editor {
+      isolation: isolate;
+      background: var(--cp-bg-elevated);
+      border-radius: 0.625rem;
+    }
+    #source {
+      position: relative;
+      z-index: 1;
+    }
+    #source,
+    .source-mirror,
+    .source-line-measure {
+      padding-left: calc(var(--source-gutter-width) + 14px);
+    }
+    .source-line-gutter {
+      position: absolute;
+      top: 1px;
+      left: 1px;
+      z-index: 2;
+      width: var(--source-gutter-width);
+      padding: 14px 8px;
+      overflow: hidden;
+      border-right: 1px solid var(--cp-border);
+      border-radius: 9px 0 0 9px;
+      background: var(--cp-surface-soft);
+      color: var(--cp-text-soft);
+      text-align: right;
+      pointer-events: none;
+      user-select: none;
+    }
+    .result-line-numbers { position: relative; }
+    .result-line-numbers > div {
+      position: absolute;
+      right: 0;
+    }
+    .result-tabs {
+      display: inline-flex;
+      flex-shrink: 0;
+      border: 1px solid var(--cp-border);
+      border-radius: 6px;
+    }
+    .result-tabs button {
+      min-height: 32px;
+      padding: 5px 8px;
+      border: 0;
+      border-radius: 5px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--cp-text-muted);
+    }
+    .result-tabs button:focus-visible { outline-offset: -2px; }
+    .result-tabs button[aria-selected="true"] {
+      background: var(--cp-surface-soft);
+      color: var(--cp-copy-success);
+      border-color: var(--cp-copy-success);
+    }
+    .explanation-view {
+      min-height: 360px;
+      max-height: 600px;
+      overflow: auto;
+      padding: 18px;
+      border: 1px solid var(--cp-border-strong);
+      border-radius: 10px;
+      background: var(--cp-surface);
+    }
+    .explanation-view h3 { margin: 0 0 8px; font-size: 1rem; }
+    .explanation-note { color: var(--cp-text-muted); font-size: 0.8125rem; margin: 0 0 16px; }
+    .explanation-section { margin-top: 20px; overflow-wrap: anywhere; }
+    .explanation-section h4 { margin: 0 0 8px; color: var(--cp-copy-success); font-size: 0.875rem; }
+    #explanation-summary { margin: 0; font-size: 0.9375rem; line-height: 1.6; }
+    #explanation-text { overflow-wrap: anywhere; font: 0.9rem/1.7 "Segoe UI", sans-serif; }
+    .explanation-steps { margin: 0; padding-left: 22px; }
+    .explanation-steps > li { padding-left: 3px; margin-bottom: 12px; }
+    .explanation-steps > li:last-child { margin-bottom: 0; }
+    .explanation-steps li::marker { color: var(--cp-copy-success); font-weight: 600; }
+    .explanation-action { margin: 0; white-space: pre-wrap; }
+    .explanation-branch { border-left: 2px solid var(--cp-border); padding-left: 12px; margin-top: 12px; }
+    .explanation-branch:first-child { margin-top: 0; }
+    .explanation-branch-title { margin: 0 0 8px; font-weight: 600; color: var(--cp-copy-success); white-space: pre-wrap; }
+    .explanation-substeps { margin-top: 8px; }
+    #explanation-warnings { padding: 12px; border: 1px solid var(--cp-border); border-radius: 8px; background: var(--cp-surface-soft); font-size: 0.8125rem; overflow-wrap: anywhere; }
+    #explanation-warnings p { margin: 0 0 8px; }
+    #explanation-warnings p:last-child { margin-bottom: 0; }
+    .source-line-measure {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 0;
+      padding-right: 14px;
+      overflow: hidden;
+      visibility: hidden;
+      pointer-events: none;
+      white-space: pre-wrap;
+      overflow-wrap: break-word;
+      tab-size: 2;
+    }
+    #copy, #copy-single-line { min-width: 145px; }
+    button[data-copy-state="success"] {
+      color: var(--cp-copy-success);
+      border-color: var(--cp-copy-success);
+    }
+    .copy-feedback {
+      min-height: 1.6em;
+      margin: 8px 0 0;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--cp-text-muted);
+      overflow-wrap: anywhere;
+    }
+    .copy-feedback[data-kind="success"] { color: var(--cp-copy-success); }
+    .copy-feedback[data-kind="error"] { color: var(--cp-danger); }
+    .function-hint {
+      margin-top: 12px;
+      padding: 12px 14px;
+      border: 1px solid var(--cp-border);
+      border-radius: 0.625rem;
+      background: var(--cp-bg-elevated);
+      color: var(--cp-text-muted);
+      font-size: 0.8125rem;
+      overflow-wrap: anywhere;
+    }
+    .function-hint-heading {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 4px 12px;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: var(--cp-text);
+    }
+    .function-hint code {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--cp-text);
+      font: 0.875rem/1.55 Consolas, "Courier New", Courier, monospace;
+    }
+    .function-hint strong {
+      color: var(--cp-accent);
+      background: var(--cp-surface-soft);
+      border-radius: 3px;
+    }
+    .function-hint p { margin: 0; }
+    .function-hint a { color: var(--cp-link); }
+    .source-mirror {
+      position: absolute;
+      z-index: 0;
+      margin: 0;
+      padding: 14px;
+      padding-left: calc(var(--source-gutter-width) + 14px);
+      overflow: hidden;
+      pointer-events: none;
+      color: var(--cp-text);
+      font: 0.9rem/1.55 Consolas, "Courier New", Courier, monospace;
+      white-space: pre-wrap;
+      overflow-wrap: break-word;
+      tab-size: 2;
+      border-radius: 0.625rem;
+    }
+    #source.has-source-highlight {
+      color: var(--cp-transparent);
+      background: var(--cp-transparent);
+      caret-color: var(--cp-text);
+    }
+    #source.over-argument-warning { cursor: pointer; }
+    .source-mirror mark,
+    .error-context mark {
+      font-weight: 700;
+    }
+    .source-mirror mark {
+      color: var(--cp-danger);
+      background: var(--cp-danger-soft);
+      border-bottom: 2px solid var(--cp-danger);
+    }
+    .source-mirror mark.parenthesis-match {
+      color: var(--cp-accent);
+      background: var(--cp-surface-soft);
+      border-bottom-color: var(--cp-accent);
+    }
+    .source-mirror mark.current-function {
+      color: var(--cp-copy-success);
+      background: var(--cp-surface-soft);
+      border-bottom: 1px solid var(--cp-copy-success);
+      font-weight: 400;
+    }
+    .source-mirror mark.argument-warning {
+      color: var(--cp-text);
+      background: var(--cp-transparent);
+      border-bottom: 0;
+      font-weight: 400;
+      text-decoration: underline wavy var(--cp-warning-text);
+      text-underline-offset: 3px;
+    }
+    .source-mirror mark.argument-warning.warning-selected {
+      outline: 2px solid var(--cp-accent);
+      outline-offset: 1px;
+      background: var(--cp-warning-soft);
+      color: var(--cp-warning-text);
+    }
+    .source-mirror mark.argument-warning.argument-error {
+      color: var(--cp-danger);
+      text-decoration-color: var(--cp-danger);
+    }
+    .source-mirror mark.argument-error.warning-selected { background: var(--cp-danger-soft); }
+    .result-view {
+      min-height: 360px;
+      max-height: 600px;
+      overflow: auto;
+      padding: 14px;
+      border: 1px solid var(--cp-border-strong);
+      border-radius: 0.625rem;
+      background: var(--cp-bg-elevated);
+      font: 0.9rem/1.55 Consolas, "Courier New", Courier, monospace;
+      white-space: pre;
+      tab-size: 2;
+    }
+    .result-view:empty::before {
+      content: "Your formatted expression will appear here.";
+      color: var(--cp-text-muted);
+      white-space: normal;
+    }
+    button.fold-toggle {
+      min-height: 0;
+      width: 18px;
+      height: 20px;
+      padding: 0;
+      margin: 0 2px;
+      vertical-align: baseline;
+      border: 0;
+      border-radius: 4px;
+      background: var(--cp-accent-soft);
+      color: var(--cp-accent);
+      font: inherit;
+      line-height: 20px;
+    }
+    .fold-placeholder {
+      padding: 0 4px;
+      color: var(--cp-text-muted);
+    }
+    .view-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .view-toolbar button {
+      min-height: 32px;
+      padding: 4px 10px;
+      font-size: 0.8125rem;
+    }
+    .plain-result {
+      margin-top: 12px;
+      color: var(--cp-text-muted);
+      font-size: 0.875rem;
+    }
+    .plain-result summary {
+      cursor: pointer;
+      margin-bottom: 8px;
+    }
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin: 12px 0 0;
+    }
+    button {
+      min-height: 40px;
+      padding: 8px 14px;
+      border: 1px solid var(--cp-accent);
+      border-radius: 8px;
+      background: var(--cp-surface);
+      color: var(--cp-accent);
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    button:hover {
+      background: var(--cp-surface-soft);
+    }
+    button.primary {
+      border-color: var(--cp-accent);
+      background: var(--cp-accent);
+      color: var(--cp-accent-fg);
+    }
+    button.primary:hover {
+      border-color: var(--cp-accent-hover);
+      background: var(--cp-accent-hover);
+    }
+    button:disabled {
+      cursor: not-allowed;
+      opacity: 0.55;
+    }
+    #status {
+      display: block;
+      margin: 8px 0 0;
+      min-height: 1.5em;
+      color: var(--cp-text-muted);
+      font-size: 0.875rem;
+    }
+    #status[data-kind="error"] {
+      color: var(--cp-danger);
+    }
+    #status[data-kind="success"] {
+      color: var(--cp-success);
+    }
+    #status[data-kind="warning"] { color: var(--cp-warning-text); }
+    #warning-badge {
+      min-height: 28px;
+      padding: 4px 9px;
+      border-color: var(--cp-warning-text);
+      border-radius: 16px;
+      background: var(--cp-warning-soft);
+      color: var(--cp-warning-text);
+      font-size: 0.75rem;
+      white-space: nowrap;
+    }
+    .warning-popover {
+      position: fixed;
+      z-index: 20;
+      display: flex;
+      flex-direction: column;
+      width: min(420px, calc(100vw - 16px));
+      padding: 10px;
+      border: 1px solid var(--cp-warning-text);
+      border-radius: 8px;
+      background: var(--cp-surface);
+      color: var(--cp-text);
+      box-shadow: var(--cp-shadow);
+      overflow: hidden;
+      font-size: 0.8125rem;
+    }
+    .warning-popover-heading, .warning-popover-nav { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+    .warning-popover-heading { justify-content: space-between; margin-bottom: 4px; cursor: grab; touch-action: none; user-select: none; }
+    .warning-popover-heading:focus-visible { outline: 2px solid var(--cp-accent); outline-offset: 2px; }
+    .warning-popover-heading.dragging { cursor: grabbing; }
+    .warning-popover-heading h3 { margin: 0; font-size: 0.8125rem; color: var(--cp-warning-text); }
+    .warning-popover button { min-height: 26px; padding: 4px 6px; font-size: 0.6875rem; font-weight: 500; }
+    .warning-popover-content { overflow: auto; overscroll-behavior: contain; min-height: 0; overflow-wrap: anywhere; }
+    .warning-popover-content strong { color: var(--cp-warning-text); }
+    .warning-popover-content p { margin: 3px 0 4px; font-size: 0.75rem; }
+    .warning-popover-content code { display: block; margin: 3px 0 4px; font: 0.6875rem/1.5 Consolas, "Courier New", monospace; white-space: pre-wrap; }
+    .warning-popover-nav { margin-top: 6px; }
+    #warning-position { margin-right: auto; font-size: 0.6875rem; color: var(--cp-warning-text); }
+    .warning-popover-note { flex-shrink: 0; margin: 6px 0 0; font-size: 0.625rem; color: var(--cp-text-muted); }
+    #warning-badge[data-severity="error"] {
+      color: var(--cp-danger);
+      border-color: var(--cp-danger);
+      background: var(--cp-danger-soft);
+    }
+    .warning-popover[data-severity="error"] { border-color: var(--cp-danger); }
+    .warning-popover[data-severity="error"] h3,
+    .warning-popover[data-severity="error"] strong,
+    .warning-popover[data-severity="error"] #warning-position { color: var(--cp-danger); }
+    [hidden] {
+      display: none !important;
+    }
+    .error-card {
+      min-height: 360px;
+      padding: 24px;
+      border: 1px solid var(--cp-danger-border);
+      border-radius: 10px;
+      background: var(--cp-surface);
+      color: var(--cp-text);
+      scroll-margin: 24px;
+    }
+    .error-card:focus {
+      outline: 2px solid var(--cp-accent);
+      outline-offset: 3px;
+    }
+    .error-card-heading {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .error-icon {
+      display: inline-grid;
+      place-items: center;
+      width: 28px;
+      height: 28px;
+      flex: 0 0 28px;
+      border-radius: 50%;
+      background: var(--cp-danger-soft);
+      color: var(--cp-danger);
+      font-weight: 700;
+    }
+    .error-card h3 {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+    .error-card p {
+      margin: 12px 0;
+      overflow-wrap: anywhere;
+    }
+    .error-help,
+    .error-location {
+      color: var(--cp-text-muted);
+      font-size: 0.875rem;
+    }
+    .error-context {
+      padding: 12px;
+      border-radius: 6px;
+      background: var(--cp-surface-soft);
+      font: 0.875rem/1.6 Consolas, "Courier New", monospace;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+    .error-context mark {
+      background: var(--cp-danger-soft);
+      color: var(--cp-danger);
+      border-bottom: 2px solid var(--cp-danger);
+    }
+    #source[aria-invalid="true"] {
+      border-color: var(--cp-danger-border);
+    }
+    #help-drawer {
+      inset: 0 0 0 auto;
+      margin: 0;
+      width: min(420px, 100%);
+      max-width: 100%;
+      height: 100dvh;
+      max-height: 100dvh;
+      padding: 24px;
+      border: 0;
+      border-left: 1px solid var(--cp-border);
+      background: var(--cp-surface);
+      color: var(--cp-text-muted);
+      font-size: 0.875rem;
+      box-shadow: var(--cp-shadow);
+      overflow: auto;
+      overscroll-behavior: contain;
+    }
+    #help-drawer::backdrop { background: var(--cp-help-backdrop); }
+    .help-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .help-heading h2 { color: var(--cp-copy-success); }
+    .help-topics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .help-topics button { font-size: 0.8125rem; padding: 6px 10px; }
+    .help-topics button[aria-pressed="true"] {
+      background: var(--cp-surface-soft);
+      color: var(--cp-copy-success);
+      border-color: var(--cp-copy-success);
+    }
+    body:has(#help-drawer[open]) { overflow: hidden; }
+    .guidance-content {
+      line-height: 1.6;
+      overflow-wrap: anywhere;
+    }
+    .guidance-content h3 {
+      margin: 12px 0 4px;
+      color: var(--cp-text);
+      font-size: 0.875rem;
+    }
+    .guidance-content h3:first-child { margin-top: 0; }
+    .guidance-content p { margin: 0 0 8px; }
+    .guidance-content p:last-child { margin-bottom: 0; }
+    .help-section { border-bottom: 1px solid var(--cp-border); padding: 0; }
+    .help-section:first-child { border-top: 1px solid var(--cp-border); }
+    .help-section summary { padding: 12px 0; cursor: pointer; color: var(--cp-copy-success); font-weight: 600; }
+    .help-section .help-section-body { padding: 0 0 12px; }
+    .guidance-content kbd,
+    .guidance-content code {
+      font: 0.875rem Consolas, "Courier New", Courier, monospace;
+      color: var(--cp-text);
+    }
+    .footer-note {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid var(--cp-border);
+      color: var(--cp-text-muted);
+      font-size: 0.75rem;
+    }
+    .footer-version { flex-shrink: 0; white-space: nowrap; text-align: right; }
+    @media (max-width: 760px) {
+      main {
+        width: min(100% - 24px, 600px);
+        margin: 24px auto;
+      }
+      .panels {
+        grid-template-columns: 1fr;
+      }
+      #theme-toggle { margin-left: auto; }
+      textarea {
+        min-height: 240px;
+      }
+      .masthead-inner {
+        width: calc(100% - 32px);
+        min-height: 56px;
+        padding: 8px 0;
+        gap: 12px;
+      }
+      .masthead .product-logo { width: 32px; height: 32px; flex-basis: 32px; }
+      .masthead #open-help { flex-shrink: 0; }
+      .masthead {
+        width: 100%;
+      }
+      .local-badge {
+        display: none;
+      }
+      .tool-name {
+        padding-left: 12px;
+      }
+      .panel {
+        padding: 16px;
+      }
+      .panel + .panel {
+        border-left: 0;
+        border-top: 1px solid var(--cp-border);
+      }
+      .result-view {
+        min-height: 240px;
+      }
+      .error-card {
+        min-height: 240px;
+        padding: 20px;
+      }
+    }
+    @media (max-width: 520px) {
+      .masthead .tool-name { display: none; }
+      .masthead-inner { gap: 8px; }
+      .masthead .product-name { font-size: 0.875rem; }
+      .masthead #open-help { min-height: 32px; padding: 6px 10px; font-size: 0.8125rem; }
+      .theme-notice { width: calc(100% - 32px); }
+      #help-drawer { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="masthead">
+    <div class="masthead-inner">
+      <img class="product-logo" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTYiIGhlaWdodD0iOTYiIHZpZXdCb3g9IjAgMCA5NiA5NiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGRlZnM+CjxmaWx0ZXIgaWQ9ImZpbHRlcjBfZiI+CjxmZUZsb29kIGZsb29kLW9wYWNpdHk9IjAiIHJlc3VsdD0iQmFja2dyb3VuZEltYWdlRml4Ii8+CjxmZUJsZW5kIG1vZGU9Im5vcm1hbCIgaW49IlNvdXJjZUdyYXBoaWMiIGluMj0iQmFja2dyb3VuZEltYWdlRml4IiByZXN1bHQ9InNoYXBlIi8+CjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjAuNCIgcmVzdWx0PSJlZmZlY3QxX2ZvcmVncm91bmRCbHVyIi8+CjwvZmlsdGVyPgo8ZmlsdGVyIGlkPSJmaWx0ZXIxX2YiPgo8ZmVGbG9vZCBmbG9vZC1vcGFjaXR5PSIwIiByZXN1bHQ9IkJhY2tncm91bmRJbWFnZUZpeCIvPgo8ZmVCbGVuZCBtb2RlPSJub3JtYWwiIGluPSJTb3VyY2VHcmFwaGljIiBpbjI9IkJhY2tncm91bmRJbWFnZUZpeCIgcmVzdWx0PSJzaGFwZSIvPgo8ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPSI0IiByZXN1bHQ9ImVmZmVjdDFfZm9yZWdyb3VuZEJsdXIiLz4KPC9maWx0ZXI+CjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQwX2xpbmVhciIgeDE9IjQzIiB5MT0iNTUiIHgyPSIyOSIgeTI9IjEwIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIHN0b3AtY29sb3I9IiMwRDM2QTUiLz4KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMTE1MkQ0Ii8+CjwvbGluZWFyR3JhZGllbnQ+CjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQxX2xpbmVhciIgeDE9IjQ2IiB5MT0iMTAiIHgyPSI0NiIgeTI9Ijg2IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIHN0b3AtY29sb3I9IiM4NENBRkYiLz4KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNjFCMUZCIi8+CjwvbGluZWFyR3JhZGllbnQ+CjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQyX2xpbmVhciIgeDE9IjM3LjUiIHkxPSIxMCIgeDI9IjM3LjUiIHkyPSI4NiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgo8c3RvcCBzdG9wLWNvbG9yPSIjM0I5MEY1Ii8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzJBNzhFRSIvPgo8L2xpbmVhckdyYWRpZW50Pgo8Y2xpcFBhdGggaWQ9ImNsaXAwIj4KPHJlY3Qgd2lkdGg9Ijk2IiBoZWlnaHQ9Ijk2IiBmaWxsPSJ3aGl0ZSIvPgo8L2NsaXBQYXRoPgo8Y2xpcFBhdGggaWQ9ImNsaXAxIj4KPHJlY3Qgd2lkdGg9Ijk2IiBoZWlnaHQ9Ijk2IiBmaWxsPSJ3aGl0ZSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+CjxnIGNsaXAtcGF0aD0idXJsKCNjbGlwMCkiPgo8ZyBjbGlwLXBhdGg9InVybCgjY2xpcDEpIj4KPG1hc2sgaWQ9Im1hc2swIiBtYXNrLXR5cGU9ImFscGhhIiBtYXNrVW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4PSItMSIgeT0iMTAiIHdpZHRoPSI5NyIgaGVpZ2h0PSI3NiI+CjxwYXRoIGQ9Ik02MS4yMTE2IDEwQzYyLjM0OTYgMTAgNjMuNDMzNyAxMC40ODQ3IDY0LjE5MjUgMTEuMzMyOEw5NC42MTM2IDQ1LjMzMjhDOTUuOTcyMyA0Ni44NTE0IDk1Ljk3MjMgNDkuMTQ4NiA5NC42MTM2IDUwLjY2NzJMNjQuMTkyNSA4NC42NjcyQzYzLjQzMzcgODUuNTE1MyA2Mi4zNDk2IDg2IDYxLjIxMTYgODZIMy45NDYzNEMwLjQ4ODc3NyA4NiAtMS4zNDAxMiA4MS45MDk1IDAuOTY1MzY2IDc5LjMzMjhMMjkgNDhMMC45NjUzNjYgMTYuNjY3MkMtMS4zNDAxMiAxNC4wOTA1IDAuNDg4Nzc3IDEwIDMuOTQ2MzQgMTBINjEuMjExNloiIGZpbGw9IndoaXRlIi8+CjwvbWFzaz4KPGcgbWFzaz0idXJsKCNtYXNrMCkiPgo8cGF0aCBkPSJNNjMgMTBMMjkgNDhMLTUgMTBINjNaIiBmaWxsPSJ1cmwoI3BhaW50MF9saW5lYXIpIi8+CjxnIGZpbHRlcj0idXJsKCNmaWx0ZXIwX2YpIj4KPHBhdGggZD0iTTYzIDEwLjRMLTUgODYuNEg2M0w5NyA0OC40TDYzIDEwLjRaIiBmaWxsPSJibGFjayIgZmlsbC1vcGFjaXR5PSIwLjI0Ii8+CjwvZz4KPGcgZmlsdGVyPSJ1cmwoI2ZpbHRlcjFfZikiPgo8cGF0aCBkPSJNNjMgMTJMLTUgODhINjNMOTcgNTBMNjMgMTJaIiBmaWxsPSJibGFjayIgZmlsbC1vcGFjaXR5PSIwLjMyIi8+CjwvZz4KPHBhdGggZD0iTS01IDg2TDYzIDEwTDk3IDQ4TDYzIDg2SC01WiIgZmlsbD0idXJsKCNwYWludDFfbGluZWFyKSIvPgo8cGF0aCBkPSJNLTUgODZMNjMgMTBMODAgMjlMMjkgODZILTVaIiBmaWxsPSJ1cmwoI3BhaW50Ml9saW5lYXIpIi8+CjwvZz4KPC9nPgo8L2c+Cjwvc3ZnPgo=" alt="Power Automate logo" width="40" height="40">
+      <span class="product-name">Power Automate</span>
+      <span class="tool-name">Expression tools</span>
+      <span class="local-badge">Local browser utility</span>
+      <button id="theme-toggle" type="button" aria-label="Dark theme" aria-pressed="false" title="Switch to Fluent Graphite dark theme">Dark</button>
+      <button id="open-help" type="button" aria-haspopup="dialog" aria-controls="help-drawer" aria-expanded="false">Help</button>
+    </div>
+    <p id="theme-notice" class="theme-notice" role="status" aria-live="polite" hidden></p>
+  </div>
+  <main>
+    <header>
+      <h1>Expression formatter</h1>
+      <p class="intro">Paste an expression, format it, and expand or collapse nested parentheses.</p>
+      <div class="privacy">Runs locally in this browser. Your expression is not uploaded.</div>
+    </header>
+
+    <section class="panels" aria-label="Expression formatter">
+      <div class="panel">
+        <div class="panel-heading">
+          <h2>Expression</h2>
+          <span class="counter" id="input-count">0 characters</span>
+          <button id="warning-badge" type="button" aria-controls="warning-popover" aria-expanded="false" hidden>0 warnings</button>
+        </div>
+        <div class="source-editor">
+          <textarea id="source" spellcheck="false" aria-label="Expression to format" placeholder="@if(equals(triggerBody()?['status'], 'Ready'), concat('Hello ', variables('name')), 'Not ready')"></textarea>
+          <div id="source-line-gutter" class="source-line-gutter" aria-hidden="true"><div>1</div></div>
+          <div id="source-line-measure" class="source-line-measure" aria-hidden="true"></div>
+          <pre id="source-mirror" class="source-mirror" aria-hidden="true" hidden></pre>
+        </div>
+        <div class="toolbar">
+          <button class="primary" id="format" type="button">Format expression</button>
+          <button id="explain" type="button">Explain expression</button>
+          <button id="sample" type="button">Load sample</button>
+          <button id="clear" type="button">Clear</button>
+        </div>
+        <p id="status" role="status" aria-live="polite" aria-atomic="true">Ready to format.</p>
+        <aside id="function-hint" class="function-hint" aria-label="Function reference">
+          <div class="function-hint-heading">
+            <span>Function hint</span>
+            <a id="function-reference" href="https://learn.microsoft.com/en-us/azure/logic-apps/expression-functions-reference" target="_blank" rel="noopener noreferrer">Microsoft reference</a>
+          </div>
+          <code id="function-signature" hidden></code>
+          <p id="function-description">Place the cursor on a function name or inside its parentheses to see its usage. Hints cover common functions; they do not validate your expression.</p>
+        </aside>
+      </div>
+      <div class="panel">
+        <div class="panel-heading">
+          <h2 id="output-heading">Result</h2>
+          <div class="result-tabs" role="tablist" aria-label="Result view" hidden>
+            <button id="formatted-tab" type="button" role="tab" aria-controls="formatted-panel" aria-selected="true">Formatted</button>
+            <button id="explanation-tab" type="button" role="tab" aria-controls="explanation-panel" aria-selected="false" tabindex="-1">Explanation</button>
+          </div>
+        </div>
+        <section id="explanation-panel" class="explanation-view" role="tabpanel" aria-labelledby="explanation-tab" tabindex="0" hidden>
+          <h3>In plain English</h3>
+          <p class="explanation-note">Local explanation of the logic, not an executed result.</p>
+          <section class="explanation-section" aria-labelledby="explanation-summary-heading">
+            <h4 id="explanation-summary-heading">Summary</h4>
+            <p id="explanation-summary"></p>
+          </section>
+          <section class="explanation-section" aria-labelledby="explanation-steps-heading">
+            <h4 id="explanation-steps-heading">Steps</h4>
+            <div id="explanation-text"></div>
+          </section>
+          <section class="explanation-section" aria-labelledby="explanation-notes-heading">
+            <h4 id="explanation-notes-heading">Notes</h4>
+            <div id="explanation-warnings"></div>
+          </section>
+        </section>
+        <div id="formatted-panel" role="tabpanel" aria-label="Formatted expression">
+        <div id="result-editor" class="result-editor">
+          <div id="result-view" class="result-view" role="region" aria-label="Collapsible formatted expression" tabindex="0"></div>
+          <div id="result-line-gutter" class="source-line-gutter" aria-hidden="true" hidden></div>
+        </div>
+        <section id="error-card" class="error-card" role="alert" aria-atomic="true" aria-labelledby="error-title" aria-describedby="error-message error-help" tabindex="-1" hidden>
+          <div class="error-card-heading">
+            <span class="error-icon" aria-hidden="true">!</span>
+            <h3 id="error-title">One thing to fix</h3>
+          </div>
+          <p id="error-message"></p>
+          <p id="error-location" class="error-location" hidden></p>
+          <pre id="error-context" class="error-context" aria-label="Source near the issue" hidden></pre>
+          <p id="error-help" class="error-help"></p>
+          <button id="go-to-issue" type="button" hidden>Go to issue</button>
+          <button id="review-function-issues" type="button" hidden>Review function issues</button>
+        </section>
+        <div class="toolbar">
+          <button id="copy" type="button" disabled>Copy formatted</button>
+          <button id="copy-single-line" type="button" disabled>Copy single line</button>
+          <button id="expand-all" type="button" disabled>Expand all</button>
+          <button id="collapse-all" type="button" disabled>Collapse all</button>
+          <span class="counter" id="output-count">0 lines</span>
+        </div>
+        <p id="copy-feedback" class="copy-feedback" role="status" aria-live="polite" aria-atomic="true"></p>
+        <details class="plain-result">
+          <summary>Plain text (select or copy manually)</summary>
+          <textarea id="result" spellcheck="false" aria-label="Formatted expression" readonly placeholder="Your formatted expression will appear here."></textarea>
+          <div id="single-line-fallback" hidden>
+            <p>Single-line expression (select or copy manually)</p>
+            <textarea id="single-line-result" spellcheck="false" aria-label="Single-line expression" readonly></textarea>
+          </div>
+        </details>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer-note">
+      <span>Custom tool for Microsoft Power Automate. Not an official Microsoft product.</span>
+      <span class="footer-version" aria-label="Version 0.2.6, pilot">v0.2.6 (Pilot)</span>
+    </footer>
+  </main>
+    <section id="warning-popover" class="warning-popover" role="region" aria-labelledby="warning-title" hidden>
+      <div id="warning-drag-handle" class="warning-popover-heading" tabindex="0" role="group" aria-label="Move issue overlay. Drag this header or use arrow keys; hold Shift for fine movement." title="Drag to move. When focused, use arrow keys; Shift moves one pixel.">
+        <h3 id="warning-title">At this function</h3>
+        <button id="close-warning" type="button">Close</button>
+      </div>
+      <div id="warning-content" class="warning-popover-content" aria-live="polite" aria-atomic="true"></div>
+      <div class="warning-popover-nav">
+        <span id="warning-position">1 of 1</span>
+        <button id="previous-warning" type="button" aria-label="Previous issue (wraps to last)">Previous</button>
+        <button id="next-warning" type="button" aria-label="Next issue (wraps to first)">Next</button>
+      </div>
+      <p class="warning-popover-note">Errors block output. Warnings identify functions this tool cannot verify.</p>
+    </section>
+    <dialog id="help-drawer" aria-labelledby="help-title">
+      <div class="help-heading">
+        <h2 id="help-title">Help &amp; reference</h2>
+        <button id="close-help" type="button" autofocus>Close</button>
+      </div>
+      <nav class="help-topics" aria-label="Help topics">
+        <button type="button" data-help-topic="editing" aria-controls="help-editing" aria-pressed="true">Editing</button>
+        <button type="button" data-help-topic="formatting" aria-controls="help-formatting" aria-pressed="false">Formatting</button>
+        <button type="button" data-help-topic="copying" aria-controls="help-copying" aria-pressed="false">Copying</button>
+        <button type="button" data-help-topic="about" aria-controls="help-about" aria-pressed="false">Limits &amp; privacy</button>
+      </nav>
+        <section id="help-editing" class="guidance-content" aria-label="Editing help">
+          <details class="help-section" open>
+            <summary>Enter &amp; edit</summary>
+            <div class="help-section-body">
+              <p>Paste a single-line or multiline expression into the left editor. Edit it normally; formatting does not change your input.</p>
+              <p>Editing clears previous results and warnings. Format again when ready.</p>
+            </div>
+          </details>
+          <details class="help-section">
+            <summary>Highlights &amp; function hints</summary>
+            <div class="help-section-body">
+              <p>Place the cursor inside a function to highlight its name in blue and show its hint. You can also select a function name to read its hint. Selecting text or leaving the editor clears the blue function highlight.</p>
+              <p>Place the cursor immediately before <code>(</code> or <code>)</code> to highlight its matching partner.</p>
+              <p>Red marks indicate errors. Amber underlines indicate warnings. Select an underlined function to inspect its issue.</p>
+            </div>
+          </details>
+        </section>
+        <section id="help-formatting" class="guidance-content" aria-label="Formatting help" hidden>
+          <details class="help-section" open>
+            <summary>Format &amp; fold</summary>
+            <div class="help-section-body">
+              <p>Select <strong>Format expression</strong> or press <kbd>Ctrl+Enter</kbd>. Your input stays unchanged.</p>
+              <p>Use <strong>- / +</strong> to fold individual groups, or <strong>Expand all / Collapse all</strong>.</p>
+            </div>
+          </details>
+          <details class="help-section">
+            <summary>Line numbers</summary>
+            <div class="help-section-body">
+              <p>Input numbers count actual line breaks, not wrapped rows. Result numbers refer to the full formatted expression and stay fixed when groups collapse.</p>
+              <p>Error and warning locations refer to the left input. The two editors need not have matching line numbers.</p>
+            </div>
+          </details>
+          <details class="help-section">
+            <summary>Errors &amp; warnings</summary>
+            <div class="help-section-body">
+              <p>Select an underlined function or the issue badge. Keyboard: <kbd>Alt+ArrowDown</kbd> with the cursor on an affected function.</p>
+              <p><strong>Previous / Next</strong> clears the outline and moves to the next function, scrolling only the input if needed.</p>
+              <p>Errors block formatting, explanations, and copying, and appear in the right-side error panel. Fix the input and format again.</p>
+              <p>Unknown functions produce warnings, not errors: they may be valid but missing from this tool's catalog. Warnings allow formatting and copying.</p>
+              <p>Dismiss the overlay with <kbd>Escape</kbd>, <strong>Close</strong>, or a click outside.</p>
+            </div>
+          </details>
+          <details class="help-section">
+            <summary>Moving the issue overlay</summary>
+            <div class="help-section-body">
+              <p>Drag its header to move it. Keyboard: focus the header and use arrow keys; hold <kbd>Shift</kbd> for finer movement.</p>
+              <p>The position stays for the current issue. Previous/Next, another function, or reopening restores its position beneath the function.</p>
+              <p>The default overlay stays beneath its function on the page. It can scroll out of view without closing; scroll back to see it again. A manually moved overlay stays at your chosen position in the browser window.</p>
+            </div>
+          </details>
+          <details class="help-section">
+            <summary>Explain expression</summary>
+            <div class="help-section-body">
+              <p>Select <strong>Explain expression</strong> for <strong>Summary, Steps, and Notes</strong>. Use the result-header switch to return to formatted code.</p>
+              <p>Labels such as "formatted text" are reading aids, not new flow variables. Review unsupported parts and caveats in Notes.</p>
+            </div>
+          </details>
+        </section>
+        <section id="help-copying" class="guidance-content" aria-label="Copying help" hidden>
+          <details class="help-section" open>
+            <summary>Choose a copy format</summary>
+            <div class="help-section-body">
+              <p><strong>Copy formatted</strong> keeps indentation and line breaks.</p>
+              <p><strong>Copy single line</strong> removes layout spacing and keeps one space after commas.</p>
+              <p>Both include collapsed sections, exclude line numbers, and preserve quoted text.</p>
+            </div>
+          </details>
+          <details class="help-section">
+            <summary>If copying is unavailable</summary>
+            <div class="help-section-body">
+              <p>A literal line break inside a quoted string disables single-line copying. Use <strong>Copy formatted</strong> to preserve it.</p>
+              <p>If clipboard access is blocked, copy the selected expression under <strong>Plain text</strong> manually.</p>
+            </div>
+          </details>
+        </section>
+        <section id="help-about" class="guidance-content" aria-label="Limits and privacy" hidden>
+          <details class="help-section" open>
+            <summary>What is checked</summary>
+            <div class="help-section-body">
+              <p>Structural errors: unmatched parentheses, brackets, and quotation marks.</p>
+              <p>Argument errors: incorrect counts for cataloged functions and empty argument slots. Optional and variable-length argument lists are supported.</p>
+              <p>Warnings: functions outside the local catalog cannot be verified. They are not automatically invalid.</p>
+            </div>
+          </details>
+          <details class="help-section">
+            <summary>What is not validated</summary>
+            <div class="help-section-body">
+              <p>Unknown functions, argument types or values, array contents, and runtime behavior. Hints do not cover the entire function reference.</p>
+              <p>Explanations use local rules, not a language model. They do not execute your expression or infer business context.</p>
+              <p>No warnings is not a guarantee of success. Review the expression before using it in a flow.</p>
+            </div>
+          </details>
+          <details class="help-section">
+            <summary>Light &amp; dark theme</summary>
+            <div class="help-section-body">
+              <p>Use the sun/moon switch in the header to toggle Fluent Graphite on or off. Light is the default; the tool does not follow your Windows theme.</p>
+              <p>Your last choice is remembered in this browser for 30 days from each toggle. Only the theme and its expiry are saved, never your expression.</p>
+              <p>Browser privacy settings or moving the file may prevent the choice from being retained. If storage is blocked, switching still works for the current page.</p>
+            </div>
+          </details>
+          <details class="help-section">
+            <summary>Privacy &amp; ownership</summary>
+            <div class="help-section-body">
+              <p>Your expression stays in this browser and is not uploaded. Microsoft reference links open external documentation only when selected.</p>
+              <p>Custom tool for Microsoft Power Automate. Not an official Microsoft product.</p>
+            </div>
+          </details>
+        </section>
+    </dialog>
+
+  <script>
+    "use strict";
+
+    const themeToggle = document.getElementById("theme-toggle");
+    const themeNotice = document.getElementById("theme-notice");
+    themeToggle.setAttribute("role", "switch");
+    themeToggle.setAttribute("aria-label", "Color theme");
+    themeToggle.innerHTML = `<span class="theme-track" aria-hidden="true"><span class="theme-thumb"></span><span class="theme-symbol sun"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.4 1.4m11.2 11.2L19 19M5 19l1.4-1.4M17.6 6.4L19 5"></path></svg></span><span class="theme-symbol moon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.1A8.5 8.5 0 0 1 9.9 3.5 8.5 8.5 0 1 0 20.5 14.1Z"></path></svg></span></span>`;
+    function updateThemeControl() {
+      const dark = document.documentElement.getAttribute("data-theme") === "dark";
+      themeToggle.setAttribute("aria-checked", String(dark));
+      themeToggle.title = dark ? "Switch to light theme" : "Switch to dark theme";
+      themeNotice.textContent = themeStorageMessage;
+      themeNotice.hidden = !themeStorageMessage;
+    }
+    themeToggle.addEventListener("click", () => {
+      const theme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", theme);
+      try {
+        localStorage.setItem(themeStorageKey, JSON.stringify({
+          theme,
+          expiresAt: Date.now() + themePreferenceLifetime
+        }));
+        themeStorageMessage = "";
+      } catch (error) {
+        if (!isThemeStorageError(error)) throw error;
+        console.warn("Unable to save the theme preference.", error);
+        themeStorageMessage = "Theme changed for this page only. Browser storage is unavailable.";
+      }
+      updateThemeControl();
+    });
+    updateThemeControl();
+
+    const helpDrawer = document.getElementById("help-drawer");
+    const explanationPanel = document.getElementById("explanation-panel");
+    const explanationText = document.getElementById("explanation-text");
+    const explanationSummary = document.getElementById("explanation-summary");
+    const explanationWarnings = document.getElementById("explanation-warnings");
+    const warningBadge = document.getElementById("warning-badge");
+    const warningPopover = document.getElementById("warning-popover");
+    const warningContent = document.getElementById("warning-content");
+    const warningPosition = document.getElementById("warning-position");
+    const previousWarning = document.getElementById("previous-warning");
+    const nextWarning = document.getElementById("next-warning");
+    let currentArgumentIssues = [];
+    let activeArgumentIndex = 0;
+    let outlinedArgumentIndex = null;
+    let warningOpener = null;
+    let warningPositionFrame = null;
+    const warningDragHandle = document.getElementById("warning-drag-handle");
+    let manualWarningPosition = null;
+    let warningDrag = null;
+    let warningHoverPoint = null;
+    const formattedPanel = document.getElementById("formatted-panel");
+    const resultTabs = document.querySelector(".result-tabs");
+    const formattedTab = document.getElementById("formatted-tab");
+    const explanationTab = document.getElementById("explanation-tab");
+    let hasExplanation = false;
+    const openHelp = document.getElementById("open-help");
+    openHelp.addEventListener("click", () => {
+      helpDrawer.showModal();
+      openHelp.setAttribute("aria-expanded", "true");
+    });
+    document.getElementById("close-help").addEventListener("click", () => helpDrawer.close());
+    helpDrawer.addEventListener("close", () => {
+      openHelp.setAttribute("aria-expanded", "false");
+      openHelp.focus({ preventScroll: true });
+    });
+    document.querySelectorAll("[data-help-topic]").forEach(button => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll("[data-help-topic]").forEach(topic => {
+          const selected = topic === button;
+          topic.setAttribute("aria-pressed", String(selected));
+          document.getElementById(topic.getAttribute("aria-controls")).hidden = !selected;
+        });
+      });
+    });
+
+    const source = document.getElementById("source");
+    const sourceMirror = document.getElementById("source-mirror");
+    const sourceLineGutter = document.getElementById("source-line-gutter");
+    const sourceLineMeasure = document.getElementById("source-line-measure");
+    let numberedSource = null;
+    let numberedWidth = null;
+    const functionSignature = document.getElementById("function-signature");
+    const functionDescription = document.getElementById("function-description");
+    const functionReference = document.getElementById("function-reference");
+    const result = document.getElementById("result");
+    const formatButton = document.getElementById("format");
+    const copyButton = document.getElementById("copy");
+    const copySingleLineButton = document.getElementById("copy-single-line");
+    const copyFeedback = document.getElementById("copy-feedback");
+    const singleLineFallback = document.getElementById("single-line-fallback");
+    const singleLineResult = document.getElementById("single-line-result");
+    const status = document.getElementById("status");
+    const inputCount = document.getElementById("input-count");
+    const outputCount = document.getElementById("output-count");
+    const resultView = document.getElementById("result-view");
+    const resultEditor = document.getElementById("result-editor");
+    const resultLineGutter = document.getElementById("result-line-gutter");
+    let resultLineFrame = null;
+    const expandAllButton = document.getElementById("expand-all");
+    const collapseAllButton = document.getElementById("collapse-all");
+    const errorCard = document.getElementById("error-card");
+    const errorMessage = document.getElementById("error-message");
+    const errorHelp = document.getElementById("error-help");
+    const errorLocation = document.getElementById("error-location");
+    const errorContext = document.getElementById("error-context");
+    const goToIssueButton = document.getElementById("go-to-issue");
+    const reviewFunctionIssues = document.getElementById("review-function-issues");
+    let issuePosition = null;
+    let pendingDeletion = null;
+    let deletedClosingDelimiter = null;
+    let pairedSource = null;
+    let parenthesisPairs = new Map();
+    let highlightedSourceState = null;
+    let hintedSource = null;
+    let functionCalls = [];
+    let functionHintState = null;
+    const functionReferenceUrl = "https://learn.microsoft.com/en-us/azure/logic-apps/expression-functions-reference";
+    const functionHints = new Map([
+      ["if", { args: ["condition", "valueIfTrue", "valueIfFalse"], description: "Returns one value when the condition is true, and another when it is false." }],
+      ["equals", { args: ["value1", "value2"], description: "Returns true when the two values are equal." }],
+      ["concat", { args: ["text1", "text2", "..."], variadic: true, description: "Combines two or more strings into one string." }],
+      ["coalesce", { args: ["value1", "value2", "..."], minArgs: 1, variadic: true, description: "Returns the first non-null value. Empty strings, arrays, and objects are not null." }],
+      ["and", { args: ["condition1", "condition2", "..."], variadic: true, description: "Returns true when all conditions are true." }],
+      ["or", { args: ["condition1", "condition2", "..."], variadic: true, description: "Returns true when at least one condition is true." }],
+      ["not", { args: ["condition"], description: "Returns the opposite of a Boolean value." }],
+      ["empty", { args: ["collection"], description: "Returns true when a string, array, or object is empty." }],
+      ["contains", { args: ["collection", "value"], description: "Checks for a substring, array item, or object key. Comparisons are case-sensitive." }],
+      ["indexOf", { args: ["text", "searchText"], description: "Returns the zero-based position of the first matching substring, or -1 if not found. Matching is case-insensitive." }],
+      ["lastIndexOf", { args: ["text", "searchText"], description: "Returns the zero-based starting position of the last matching substring. Matching is case-insensitive. See the reference for empty-string behavior." }],
+      ["startsWith", { args: ["text", "searchText"], description: "Returns true when the string begins with the specified substring. Matching is case-insensitive." }],
+      ["endsWith", { args: ["text", "searchText"], description: "Returns true when the string ends with the specified substring. Matching is case-insensitive." }],
+      ["length", { args: ["collection"], description: "Returns the number of characters in a string or items in an array." }],
+      ["variables", { args: ["'variableName'"], description: "Returns the current value of a flow variable." }],
+      ["parameters", { args: ["'parameterName'"], description: "Returns the value of a workflow parameter." }],
+      ["outputs", { args: ["'actionName'"], description: "Returns an action's outputs. Use the action's internal name." }],
+      ["body", { args: ["'actionName'"], description: "Returns an action's body output. Use the action's internal name." }],
+      ["triggerBody", { args: [], description: "Returns the body output of the flow's trigger." }],
+      ["triggerOutputs", { args: [], description: "Returns the outputs of the flow's trigger." }],
+      ["item", { args: [], description: "Returns the current item in a repeating action over an array." }],
+      ["items", { args: ["'loopName'"], description: "Returns the current item from the specified Apply to each loop." }],
+      ["string", { args: ["value"], description: "Converts a value to a string." }],
+      ["int", { args: ["value"], description: "Converts a string containing an integer to an integer." }],
+      ["float", { args: ["value", "[locale]"], description: "Converts a numeric string to a floating-point number. Locale is optional." }],
+      ["formatNumber", { args: ["number", "format", "[locale]"], description: "Formats a number as text using the specified numeric format, such as '0.00' for two decimal places. Optional locale controls regional formatting; the default is en-US." }],
+      ["json", { args: ["value"], description: "Returns a JSON value, object, or array from a string or XML." }],
+      ["replace", { args: ["text", "oldText", "newText"], description: "Replaces a substring with new text. Matching is case-sensitive." }],
+      ["split", { args: ["text", "delimiter"], description: "Splits a string into an array using the delimiter." }],
+      ["join", { args: ["array", "delimiter"], description: "Joins array items into a string with the delimiter between items." }],
+      ["trim", { args: ["text"], description: "Removes leading and trailing whitespace from a string." }],
+      ["toLower", { args: ["text"], description: "Converts a string to lowercase." }],
+      ["toUpper", { args: ["text"], description: "Converts a string to uppercase." }],
+      ["substring", { args: ["text", "startIndex", "[length]"], description: "Returns characters starting at a zero-based index. Length is optional." }],
+      ["slice", { args: ["text", "startIndex", "[endIndex]"], description: "Returns part of a string from a zero-based start index up to, but not including, the optional end index. Negative indexes count from the end; omitting endIndex takes the rest of the string." }],
+      ["first", { args: ["collection"], description: "Returns the first character of a string or first item of an array." }],
+      ["last", { args: ["collection"], description: "Returns the last character of a string or last item of an array." }],
+      ["take", { args: ["collection", "count"], description: "Returns the specified number of characters or items from the beginning of a string or array." }],
+      ["skip", { args: ["array", "count"], description: "Skips the specified number of items at the beginning of an array and returns the remaining items." }],
+      ["union", { args: ["collection1", "collection2", "..."], variadic: true, description: "Combines arrays or objects without duplicates. Do not mix arrays with objects. For matching property names, the last value is used." }],
+      ["intersection", { args: ["collection1", "collection2", "..."], variadic: true, description: "Returns only items common to all supplied collections. Use arrays or objects, not a mixture; for matching property names, the last value is used." }],
+      ["add", { args: ["number1", "number2"], description: "Returns the sum of two numbers." }],
+      ["sub", { args: ["number1", "number2"], description: "Subtracts the second number from the first." }],
+      ["mul", { args: ["number1", "number2"], description: "Returns the product of two numbers." }],
+      ["div", { args: ["number1", "number2"], description: "Divides the first number by the second. Two integer inputs produce an integer result." }],
+      ["greater", { args: ["value1", "value2"], description: "Returns true when the first value is greater than the second." }],
+      ["greaterOrEquals", { args: ["value1", "value2"], description: "Returns true when the first value is greater than or equal to the second." }],
+      ["less", { args: ["value1", "value2"], description: "Returns true when the first value is less than the second." }],
+      ["lessOrEquals", { args: ["value1", "value2"], description: "Returns true when the first value is less than or equal to the second." }],
+      ["formatDateTime", { args: ["timestamp", "[format]", "[locale]"], description: "Formats a timestamp. Format and locale are optional; the default format is ISO 8601." }],
+      ["utcNow", { args: ["[format]"], description: "Returns the current UTC timestamp, optionally in a specified format." }],
+      ["addDays", { args: ["timestamp", "days", "[format]"], description: "Adds days to a timestamp; a negative number subtracts days. Format is optional." }],
+      ["addHours", { args: ["timestamp", "hours", "[format]"], description: "Adds hours to a timestamp; a negative number subtracts hours. Format is optional." }],
+      ["convertTimeZone", { args: ["timestamp", "'sourceTimeZone'", "'destinationTimeZone'", "[format]"], description: "Converts a timestamp between Windows time zone IDs. Format is optional." }],
+      ["createArray", { args: ["value1", "value2", "..."], variadic: true, description: "Creates an array from two or more supplied values of the same type. For a single value, use array()." }],
+      ["array", { args: ["value"], description: "Wraps a single input in an array. It does not split a string or parse JSON text." }],
+      ["sort", { args: ["array", "[sortBy]"], description: "Sorts an array in ascending order. For objects, specify the property name to sort by. Use reverse() for descending order." }],
+      ["reverse", { args: ["array"], description: "Returns an array with its items in reverse order." }],
+      ["range", { args: ["startIndex", "count"], description: "Creates an array of consecutive integers beginning at startIndex. Count is the number of items, not the ending value; it must be positive and no greater than 100,000." }],
+      ["chunk", { args: ["collection", "length"], description: "Splits a string or array into an array of chunks of the specified length. The last chunk can be shorter." }],
+      ["addProperty", { args: ["object", "'property'", "value"], description: "Returns an object with a new property and value. Fails if the property already exists." }],
+      ["setProperty", { args: ["object", "'property'", "value"], description: "Returns an object with the property set to the supplied value, adding the property if it does not exist." }],
+      ["removeProperty", { args: ["object", "'property'"], description: "Returns an object without the named property. If it is absent, returns the original object." }],
+      ["addMinutes", { args: ["timestamp", "minutes", "[format]"], description: "Adds minutes to a timestamp; a negative number subtracts minutes. Output format is optional." }],
+      ["addSeconds", { args: ["timestamp", "seconds", "[format]"], description: "Adds seconds to a timestamp; a negative number subtracts seconds. Output format is optional." }],
+      ["addToTime", { args: ["timestamp", "interval", "'timeUnit'", "[format]"], description: "Adds an interval to a timestamp in Second, Minute, Hour, Day, Week, Month, or Year units. Output format is optional." }],
+      ["startOfDay", { args: ["timestamp", "[format]"], description: "Returns the beginning of the day for the supplied timestamp. Output format is optional; this does not convert between time zones." }],
+      ["convertFromUtc", { args: ["timestamp", "'destinationTimeZone'", "[format]"], description: "Converts a UTC timestamp to the specified Windows time zone. Output format is optional." }],
+      ["convertToUtc", { args: ["timestamp", "'sourceTimeZone'", "[format]"], description: "Converts a timestamp from the specified Windows time zone to UTC. Output format is optional." }],
+      ["dateDifference", { args: ["startDate", "endDate"], description: "Returns endDate minus startDate as a time-span string, not a numeric count of days." }],
+      ["ticks", { args: ["timestamp"], description: "Returns the integer number of 100-nanosecond intervals from midnight on January 1, 0001 to the supplied timestamp. Requires one timestamp argument." }],
+      ["dayOfWeek", { args: ["timestamp"], description: "Returns the weekday number from a timestamp: Sunday = 0, Monday = 1, through Saturday = 6." }],
+      ["parseDateTime", { args: ["timestamp", "[locale]", "[format]"], description: "Parses timestamp text into a timestamp string. Optional locale defaults to en-US; optional format describes the input text." }],
+      ["min", { args: ["numberOrArray", "..."], variadic: true, description: "Returns the lowest number from a single numeric array or from numeric arguments." }],
+      ["max", { args: ["numberOrArray", "..."], variadic: true, description: "Returns the highest number from a single numeric array or from numeric arguments." }],
+      ["mod", { args: ["dividend", "divisor"], description: "Returns the remainder of dividing dividend by divisor. The divisor cannot be zero." }],
+      ["bool", { args: ["value"], description: "Converts a supported value to Boolean true or false. Not every value can be converted." }],
+      ["isInt", { args: ["text"], description: "Returns true if the supplied string represents an integer." }],
+      ["isFloat", { args: ["text", "[locale]"], description: "Returns true if the supplied string represents a floating-point number. Optional locale selects a regional number format; the default is invariant culture." }],
+      ["base64", { args: ["text"], description: "Encodes a string as Base64 text. Encoding is not encryption." }],
+      ["base64ToString", { args: ["text"], description: "Decodes Base64-encoded text into a string." }],
+      ["uriComponent", { args: ["value"], description: "Encodes a string for use as a URI component by escaping URL-unsafe characters. Prefer this to encodeUriComponent()." }],
+      ["uriComponentToString", { args: ["value"], description: "Decodes a URI-component-encoded string into text." }],
+      ["guid", { args: ["[format]"], description: "Generates a new GUID as text. Optional format is N, D, B, P, or X; the default is D. Each call generates a new identifier." }],
+      ["result", { args: ["'scopeName'"], description: "Returns an array of results from the first-level actions inside a Scope or loop action. It does not recursively collect nested actions." }],
+      ["xml", { args: ["value"], description: "Converts supported JSON content into XML. JSON must have a single root property that is not an array." }],
+      ["xpath", { args: ["xml", "'xpathExpression'"], description: "Applies an XPath expression to XML and returns matching nodes or computed values. The return type depends on the query." }]
+    ].map(([name, hint]) => [name.toLowerCase(), { name, ...hint }]));
+    let folds = [];
+    let singleLineExpression = null;
+    let copyAttempt = 0;
+    let copyFeedbackTimer = null;
+    const sampleExpression =
+      "@if(equals(triggerBody()?['status'], 'Ready'), concat('Hello ', variables('name')), 'Not ready')";
+
+    function matchingClose(open) {
+      return { "(": ")", "[": "]", "{": "}" }[open];
+    }
+
+    class ExpressionSyntaxError extends SyntaxError {
+      constructor(message, position) {
+        super(message);
+        this.position = position;
+      }
+    }
+
+    function scanQuoted(text, start) {
+      const quote = text[start];
+      let index = start + 1;
+      while (index < text.length) {
+        if (quote === '"' && text[index] === "\\") {
+          index += 2;
+        } else if (text[index] === quote) {
+          if (text[index + 1] === quote) {
+            index += 2;
+          } else {
+            return index + 1;
+          }
+        } else {
+          index += 1;
+        }
+      }
+      throw new ExpressionSyntaxError(`Unclosed string starting at character ${start + 1}.`, start);
+    }
+
+    function scanGroup(text, start) {
+      const stack = [matchingClose(text[start])];
+      const commas = [];
+      let index = start + 1;
+
+      while (index < text.length) {
+        const char = text[index];
+        if (char === "'" || char === '"') {
+          index = scanQuoted(text, index);
+          continue;
+        }
+        if (matchingClose(char)) {
+          stack.push(matchingClose(char));
+        } else if (char === ")" || char === "]" || char === "}") {
+          if (stack[stack.length - 1] !== char) {
+            throw new ExpressionSyntaxError(`Unexpected '${char}' at character ${index + 1}.`, index);
+          }
+          stack.pop();
+          if (stack.length === 0) {
+            return { end: index, commas };
+          }
+        } else if (char === "," && stack.length === 1) {
+          commas.push(index);
+        }
+        index += 1;
+      }
+
+      throw new ExpressionSyntaxError(`Unclosed '${text[start]}' starting at character ${start + 1}.`, start);
+    }
+
+    function validateGrouping(text) {
+      // Scan the untouched source first so diagnostic positions include original whitespace.
+      let index = 0;
+      while (index < text.length) {
+        const char = text[index];
+        if (char === "'" || char === '"') {
+          index = scanQuoted(text, index);
+        } else if (matchingClose(char)) {
+          index = scanGroup(text, index).end + 1;
+        } else if (char === ")" || char === "]" || char === "}") {
+          throw new ExpressionSyntaxError(`Unexpected '${char}' at character ${index + 1}.`, index);
+        } else {
+          index += 1;
+        }
+      }
+    }
+
+    function captureClosingDeletion(event) {
+      pendingDeletion = null;
+      if (!event.inputType.startsWith("delete")) {
+        return;
+      }
+      let start = source.selectionStart;
+      let end = source.selectionEnd;
+      if (start === end) {
+        if (event.inputType === "deleteContentBackward") {
+          start -= 1;
+        } else if (event.inputType === "deleteContentForward") {
+          end += 1;
+        }
+      }
+      const text = source.value;
+      if (start < 0 || end - start !== 1 || !")]}".includes(text[start] || " ")) {
+        return;
+      }
+      try {
+        validateGrouping(text);
+      } catch (error) {
+        if (!(error instanceof ExpressionSyntaxError)) {
+          throw error;
+        }
+        return;
+      }
+      // Adjacent closing parentheses are ambiguous after deletion; capture the actual edit.
+      const stack = [];
+      for (let index = 0; index <= start; index += 1) {
+        const char = text[index];
+        if (char === "'" || char === '"') {
+          index = scanQuoted(text, index) - 1;
+        } else if (matchingClose(char)) {
+          stack.push(index);
+        } else if (")]}".includes(char)) {
+          const opening = stack.pop();
+          if (index === start) {
+            const functionMatch = char === ")" && text.slice(0, opening).match(/([A-Za-z_][A-Za-z_0-9]*)\s*$/);
+            pendingDeletion = {
+              source: text.slice(0, start) + text.slice(end),
+              opening,
+              open: text[opening],
+              close: char,
+              functionName: functionMatch ? functionMatch[1] : null
+            };
+          }
+        }
+      }
+    }
+
+    function formatRange(text, indentation) {
+      const baseIndent = "  ".repeat(indentation);
+      let formatted = "";
+      let index = 0;
+
+      while (index < text.length) {
+        const char = text[index];
+        if (char === "'" || char === '"') {
+          const end = scanQuoted(text, index);
+          formatted += text.slice(index, end);
+          index = end;
+          continue;
+        }
+        if (char === ")" || char === "]" || char === "}") {
+          throw new SyntaxError(`Unexpected '${char}' at character ${index + 1}.`);
+        }
+        if (!matchingClose(char)) {
+          formatted += char;
+          index += 1;
+          continue;
+        }
+
+        const group = scanGroup(text, index);
+        const innerStart = index + 1;
+        const innerEnd = group.end;
+        formatted += char;
+
+        if (group.commas.length === 0) {
+          formatted += formatRange(text.slice(innerStart, innerEnd), indentation);
+        } else {
+          const segments = [];
+          let segmentStart = innerStart;
+          for (const commaIndex of group.commas) {
+            segments.push(text.slice(segmentStart, commaIndex));
+            segmentStart = commaIndex + 1;
+          }
+          segments.push(text.slice(segmentStart, innerEnd));
+
+          const childIndent = "  ".repeat(indentation + 1);
+          formatted += "\n" + childIndent;
+          formatted += segments
+            .map((segment) => formatRange(segment.trim(), indentation + 1))
+            .join(",\n" + childIndent);
+          formatted += "\n" + baseIndent;
+        }
+        formatted += text[group.end];
+        index = group.end + 1;
+      }
+
+      return formatted;
+    }
+
+    function setStatus(message, kind) {
+      status.textContent = message;
+      status.dataset.kind = kind || "";
+    }
+
+    function setFoldExpanded(fold, expanded) {
+      fold.content.hidden = !expanded;
+      fold.placeholder.hidden = expanded;
+      fold.button.textContent = expanded ? "-" : "+";
+      fold.button.setAttribute("aria-expanded", String(expanded));
+      fold.button.setAttribute("aria-label", expanded ? "Collapse parentheses" : "Expand parentheses");
+      scheduleResultLineNumbers();
+    }
+
+    function scheduleResultLineNumbers() {
+      if (resultLineFrame !== null) return;
+      resultLineFrame = requestAnimationFrame(() => {
+        resultLineFrame = null;
+        updateResultLineNumbers();
+      });
+    }
+
+    function updateResultLineNumbers() {
+      if (!result.value || resultView.hidden) {
+        resultLineGutter.hidden = true;
+        return;
+      }
+      const anchors = [...resultView.querySelectorAll(".result-line-anchor")]
+        .filter(anchor => anchor.getClientRects().length > 0);
+      if (!anchors.length) return;
+      const origin = anchors[0].getBoundingClientRect().top;
+      const numbers = document.createElement("div");
+      numbers.className = "result-line-numbers";
+      numbers.style.height = `${Math.max(0, resultView.scrollHeight - 28)}px`;
+      for (const anchor of anchors) {
+        const number = document.createElement("div");
+        number.textContent = anchor.dataset.line;
+        number.style.top = `${anchor.getBoundingClientRect().top - origin}px`;
+        numbers.append(number);
+      }
+      resultLineGutter.replaceChildren(numbers);
+      resultLineGutter.hidden = false;
+      syncResultLineNumbers();
+    }
+
+    function syncResultLineNumbers() {
+      resultLineGutter.style.height = `${resultView.clientHeight}px`;
+      resultLineGutter.scrollTop = resultView.scrollTop;
+    }
+
+    function appendResultLineAnchor(container, line) {
+      const anchor = document.createElement("span");
+      anchor.className = "result-line-anchor";
+      anchor.dataset.line = String(line);
+      anchor.setAttribute("aria-hidden", "true");
+      container.append(anchor);
+    }
+
+    function appendResultText(text, container, lineState) {
+      const parts = text.split("\n");
+      parts.forEach((part, index) => {
+        if (index) {
+          container.append(document.createTextNode("\n"));
+          lineState.line += 1;
+          appendResultLineAnchor(container, lineState.line);
+        }
+        container.append(document.createTextNode(part));
+      });
+    }
+
+    function renderRange(text, container, lineState) {
+      let index = 0;
+      let textStart = 0;
+      while (index < text.length) {
+        const char = text[index];
+        if (char === "'" || char === '"') {
+          index = scanQuoted(text, index);
+          continue;
+        }
+        if (!matchingClose(char)) {
+          index += 1;
+          continue;
+        }
+        const group = scanGroup(text, index);
+        appendResultText(text.slice(textStart, index + 1), container, lineState);
+        const inner = text.slice(index + 1, group.end);
+        const content = document.createElement("span");
+        if (char === "(" && inner.length > 0) {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "fold-toggle";
+          const placeholder = document.createElement("span");
+          placeholder.className = "fold-placeholder";
+          placeholder.textContent = "...";
+          placeholder.setAttribute("aria-hidden", "true");
+          content.id = `fold-content-${folds.length}`;
+          button.setAttribute("aria-controls", content.id);
+          const fold = { button, content, placeholder };
+          folds.push(fold);
+          setFoldExpanded(fold, true);
+          button.addEventListener("click", () => setFoldExpanded(fold, content.hidden));
+          container.append(button, placeholder, content);
+        } else {
+          container.append(content);
+        }
+        renderRange(inner, content, lineState);
+        container.append(document.createTextNode(text[group.end]));
+        index = group.end + 1;
+        textStart = index;
+      }
+      appendResultText(text.slice(textStart), container, lineState);
+    }
+
+    function updateSourceLineNumbers() {
+      const text = source.value;
+      const width = source.clientWidth;
+      if (text === numberedSource && width === numberedWidth) {
+        syncSourceHighlight();
+        return;
+      }
+      numberedSource = text;
+      numberedWidth = width;
+      const lines = text.split("\n");
+      const digits = Math.max(2, String(lines.length).length);
+      source.parentElement.style.setProperty("--source-gutter-width", `calc(${digits}ch + 20px)`);
+      sourceLineMeasure.style.width = `${width}px`;
+      sourceLineMeasure.replaceChildren();
+      sourceLineGutter.replaceChildren();
+      for (const line of lines) {
+        const row = document.createElement("div");
+        row.textContent = line || "\u200b";
+        sourceLineMeasure.append(row);
+      }
+      // Measure each logical line so wrapped continuations do not receive extra numbers.
+      [...sourceLineMeasure.children].forEach((row, index) => {
+        const number = document.createElement("div");
+        number.textContent = String(index + 1);
+        number.style.height = `${row.getBoundingClientRect().height}px`;
+        sourceLineGutter.append(number);
+      });
+      syncSourceHighlight();
+    }
+
+    function syncSourceHighlight() {
+      scheduleWarningPosition();
+      updateWarningCursor();
+      sourceLineGutter.style.height = `${source.clientHeight}px`;
+      sourceLineGutter.scrollTop = source.scrollTop;
+      if (sourceMirror.hidden) {
+        return;
+      }
+      sourceMirror.style.top = `${source.offsetTop + source.clientTop}px`;
+      sourceMirror.style.left = `${source.offsetLeft + source.clientLeft}px`;
+      sourceMirror.style.width = `${source.clientWidth}px`;
+      sourceMirror.style.height = `${source.clientHeight}px`;
+      sourceMirror.scrollTop = source.scrollTop;
+      sourceMirror.scrollLeft = source.scrollLeft;
+    }
+
+    function getParenthesisPairs(text) {
+      if (pairedSource === text) {
+        return parenthesisPairs;
+      }
+      pairedSource = text;
+      parenthesisPairs = new Map();
+      const stack = [];
+      for (let index = 0; index < text.length; index += 1) {
+        const char = text[index];
+        if (char === "'" || char === '"') {
+          try {
+            index = scanQuoted(text, index) - 1;
+          } catch (error) {
+            if (!(error instanceof ExpressionSyntaxError)) {
+              throw error;
+            }
+            // While a string is being typed, the unfinished literal has no structural brackets.
+            break;
+          }
+        } else if (matchingClose(char)) {
+          stack.push(index);
+        } else if (")]}".includes(char)) {
+          const opening = stack.pop();
+          if (opening === undefined || matchingClose(text[opening]) !== char) {
+            stack.length = 0;
+          } else if (text[opening] === "(") {
+            parenthesisPairs.set(opening, index);
+            parenthesisPairs.set(index, opening);
+          }
+        }
+      }
+      return parenthesisPairs;
+    }
+
+    function getFunctionCalls(text) {
+      if (hintedSource === text) {
+        return functionCalls;
+      }
+      hintedSource = text;
+      functionCalls = [];
+      const stack = [];
+      for (let index = 0; index < text.length; index += 1) {
+        const char = text[index];
+        if (char === "'" || char === '"') {
+          try {
+            index = scanQuoted(text, index) - 1;
+          } catch (error) {
+            if (!(error instanceof ExpressionSyntaxError)) {
+              throw error;
+            }
+            break;
+          }
+        } else if (matchingClose(char)) {
+          const match = char === "(" && text.slice(0, index).match(/([A-Za-z_][A-Za-z_0-9]*)\s*$/);
+          const call = match ? {
+            name: match[1], start: index - match[0].length,
+            opening: index, end: text.length, commas: []
+          } : null;
+          if (call) {
+            functionCalls.push(call);
+          }
+          stack.push({ opening: char, call });
+        } else if (")]}".includes(char)) {
+          const group = stack.pop();
+          if (!group || matchingClose(group.opening) !== char) {
+            for (const active of stack) {
+              if (active.call) active.call.end = index;
+            }
+            stack.length = 0;
+          }
+          if (group && group.call) group.call.end = index;
+        } else if (char === "," && stack.length && stack[stack.length - 1].call) {
+          stack[stack.length - 1].call.commas.push(index);
+        }
+      }
+      return functionCalls;
+    }
+
+    function getCurrentFunction() {
+      const position = source.selectionStart;
+      const end = source.selectionEnd;
+      const calls = getFunctionCalls(source.value);
+      if (position === end) {
+        return calls.findLast(call => position >= call.start && position <= call.end);
+      }
+      // A selected name (including a double-click) identifies that function, not its parent.
+      return calls.findLast(call =>
+        (position >= call.start && end <= call.start + call.name.length)
+        || (position === call.start && end === call.end + 1));
+    }
+
+    function renderFunctionHint(call) {
+      const position = source.selectionStart;
+      const selected = source.selectionStart !== source.selectionEnd;
+      const argument = call && !selected ? call.commas.filter(comma => comma < position).length : null;
+      const state = JSON.stringify([call && call.name, argument, selected]);
+      if (state === functionHintState) return;
+      functionHintState = state;
+      functionSignature.replaceChildren();
+      functionSignature.hidden = !call;
+      functionReference.href = functionReferenceUrl;
+      if (!call) {
+        functionDescription.textContent = selected
+          ? "No single function identified in this selection. Select just a function name, or place the cursor inside its parentheses."
+          : "Place the cursor on a function name or inside its parentheses to see its usage. Hints cover common functions; they do not validate your expression.";
+        return;
+      }
+      const hint = functionHints.get(call.name.toLowerCase());
+      if (!hint) {
+        functionSignature.textContent = `${call.name}(...)`;
+        functionDescription.textContent = `No function hint available for ${call.name}(). It is not in this tool's local catalog; check the Microsoft reference. This does not necessarily mean the function is invalid.`;
+        return;
+      }
+      functionReference.href = `${functionReferenceUrl}#${hint.name.toLowerCase()}`;
+      functionSignature.append(document.createTextNode(`${hint.name}(`));
+      hint.args.forEach((label, index) => {
+        if (index) functionSignature.append(document.createTextNode(", "));
+        if (argument !== null && (index === argument || (hint.variadic && index === hint.args.length - 1 && argument >= index))) {
+          const active = document.createElement("strong");
+          active.textContent = label;
+          functionSignature.append(active);
+        } else {
+          functionSignature.append(document.createTextNode(label));
+        }
+      });
+      functionSignature.append(document.createTextNode(")"));
+      functionDescription.textContent = hint.description + (hint.args.some(label => label.startsWith("[")) ? " [Brackets] indicate optional arguments." : "");
+    }
+
+    function renderSourceHighlights() {
+      const currentFunction = getCurrentFunction();
+      renderFunctionHint(currentFunction);
+      const text = source.value;
+      const activeFunction = document.activeElement === source && source.selectionStart === source.selectionEnd ? currentFunction : null;
+      const functionStart = activeFunction ? activeFunction.start : null;
+      const functionEnd = activeFunction ? activeFunction.start + activeFunction.name.length : null;
+      let opening = null;
+      let closing = null;
+      if (document.activeElement === source && source.selectionStart === source.selectionEnd) {
+        const position = source.selectionStart;
+        if (text[position] === "(" || text[position] === ")") {
+          const match = getParenthesisPairs(text).get(position);
+          if (match !== undefined) {
+            opening = Math.min(position, match);
+            closing = Math.max(position, match);
+          }
+        }
+      }
+      const state = JSON.stringify([text, issuePosition, opening, closing, functionStart, functionEnd,
+        currentArgumentIssues.map(issue => [issue.position, issue.end]), outlinedArgumentIndex]);
+      if (state === highlightedSourceState) {
+        return;
+      }
+      highlightedSourceState = state;
+      sourceMirror.replaceChildren();
+      if (opening === null && issuePosition === null && !activeFunction && !currentArgumentIssues.length) {
+        sourceMirror.hidden = true;
+        source.classList.remove("has-source-highlight");
+        return;
+      }
+      // The native textarea handles editing and selection; the mirror adds character styling.
+      const boundaries = new Set([0, text.length]);
+      for (const position of [opening, closing, issuePosition]) {
+        if (position !== null) {
+          boundaries.add(position);
+          boundaries.add(position + 1);
+        }
+      }
+      if (activeFunction) {
+        boundaries.add(functionStart);
+        boundaries.add(functionEnd);
+      }
+      const warningStarts = new Map();
+      currentArgumentIssues.forEach((issue, index) => {
+        boundaries.add(issue.position);
+        boundaries.add(issue.end);
+        warningStarts.set(issue.position, index);
+      });
+      const positions = [...boundaries].sort((a, b) => a - b);
+      let warningIndex;
+      for (let index = 0; index < positions.length - 1; index += 1) {
+        const position = positions[index];
+        if (warningStarts.has(position)) warningIndex = warningStarts.get(position);
+        if (warningIndex !== undefined && position >= currentArgumentIssues[warningIndex].end) warningIndex = undefined;
+        const fragment = text.slice(position, positions[index + 1]);
+        const isIssue = position === issuePosition;
+        const isPair = position === opening || position === closing;
+        const isFunction = activeFunction && position >= functionStart && position < functionEnd;
+        if (!isIssue && !isPair && !isFunction && warningIndex === undefined) {
+          sourceMirror.append(document.createTextNode(fragment));
+          continue;
+        }
+        const mark = document.createElement("mark");
+        mark.textContent = fragment;
+        mark.dataset.position = String(position);
+        if (!isIssue) {
+          if (warningIndex !== undefined) {
+            mark.className = "argument-warning";
+            if (currentArgumentIssues[warningIndex].severity === "error") mark.classList.add("argument-error");
+            mark.dataset.warningIndex = String(warningIndex);
+            if (outlinedArgumentIndex === warningIndex) mark.classList.add("warning-selected");
+          } else mark.className = isPair ? "parenthesis-match" : "current-function";
+        }
+        sourceMirror.append(mark);
+      }
+      sourceMirror.append(document.createTextNode("\n"));
+      sourceMirror.hidden = false;
+      source.classList.add("has-source-highlight");
+      syncSourceHighlight();
+    }
+
+    function resetResult() {
+      currentArgumentIssues = [];
+      closeArgumentPopover();
+      activeArgumentIndex = 0;
+      warningBadge.hidden = true;
+      inputCount.hidden = false;
+      warningContent.replaceChildren();
+      hasExplanation = false;
+      resultTabs.hidden = true;
+      explanationText.textContent = "";
+      explanationSummary.textContent = "";
+      explanationWarnings.replaceChildren();
+      explanationWarnings.hidden = true;
+      selectResultView(false);
+      resetCopyFeedback();
+      result.value = "";
+      singleLineExpression = null;
+      singleLineResult.value = "";
+      singleLineFallback.hidden = true;
+      resultView.replaceChildren();
+      resultEditor.classList.remove("has-line-numbers");
+      resultEditor.hidden = false;
+      resultLineGutter.hidden = true;
+      resultLineGutter.replaceChildren();
+      folds = [];
+      copyButton.disabled = true;
+      copySingleLineButton.disabled = true;
+      copySingleLineButton.title = "Format an expression first.";
+      expandAllButton.disabled = true;
+      collapseAllButton.disabled = true;
+      errorCard.hidden = true;
+      resultView.hidden = false;
+      errorMessage.textContent = "";
+      errorHelp.textContent = "";
+      errorLocation.hidden = true;
+      errorContext.hidden = true;
+      errorContext.replaceChildren();
+      goToIssueButton.hidden = true;
+      reviewFunctionIssues.hidden = true;
+      document.getElementById("error-title").textContent = "One thing to fix";
+      issuePosition = null;
+      renderSourceHighlights();
+      source.removeAttribute("aria-invalid");
+      source.removeAttribute("aria-describedby");
+    }
+
+    function showFormattingError(message, help, position = null, functionIssues = []) {
+      resetResult();
+      currentArgumentIssues = functionIssues;
+      renderArgumentIssues();
+      updateCounts();
+      errorMessage.textContent = message;
+      errorHelp.textContent = help;
+      errorCard.hidden = false;
+      source.setAttribute("aria-invalid", "true");
+      source.setAttribute("aria-describedby", "error-message error-help");
+      resultView.hidden = true;
+      resultEditor.hidden = true;
+      if (position !== null) {
+        issuePosition = position;
+        renderSourceHighlights();
+        const preceding = source.value.slice(0, position);
+        const line = preceding.split("\n").length;
+        const column = position - preceding.lastIndexOf("\n");
+        errorLocation.textContent = `Character ${position + 1} / Line ${line}, column ${column}`;
+        errorLocation.hidden = false;
+        const start = Math.max(0, position - 30);
+        const end = Math.min(source.value.length, position + 60);
+        const mark = document.createElement("mark");
+        mark.textContent = source.value[position];
+        errorContext.append(
+          document.createTextNode((start > 0 ? "..." : "") + source.value.slice(start, position)),
+          mark,
+          document.createTextNode(source.value.slice(position + 1, end) + (end < source.value.length ? "..." : ""))
+        );
+        errorContext.hidden = false;
+        goToIssueButton.textContent = `Go to character ${position + 1}`;
+        goToIssueButton.hidden = false;
+      }
+      outputCount.textContent = "Not generated";
+      if (functionIssues.length) {
+        const errors = functionIssues.filter(issue => issue.severity === "error").length;
+        document.getElementById("error-title").textContent = `${errors} ${errors === 1 ? "error" : "errors"} to fix`;
+        goToIssueButton.hidden = true;
+        reviewFunctionIssues.hidden = false;
+      }
+      setStatus("Formatting did not complete. See the issue in the result pane.", "error");
+      errorCard.focus({ preventScroll: true });
+      errorCard.scrollIntoView({ block: "center", behavior: "instant" });
+    }
+
+    function updateCounts() {
+      updateSourceLineNumbers();
+      inputCount.textContent = `${source.value.length} characters`;
+      const lineCount = result.value ? result.value.split("\n").length : 0;
+      outputCount.textContent = `${lineCount} ${lineCount === 1 ? "line" : "lines"}`;
+    }
+
+    function formatExpression() {
+      const expression = source.value.trim();
+      if (!expression) {
+        showFormattingError("No expression was entered.", "Paste an expression into the input, then select Format expression.");
+        return;
+      }
+
+      try {
+        resetResult();
+        validateGrouping(source.value);
+        currentArgumentIssues = collectArgumentIssues(source.value);
+        const blocking = currentArgumentIssues.filter(issue => issue.severity === "error");
+        if (blocking.length) {
+          showFormattingError(
+            `${blocking[0].name}(): ${blocking[0].message}`,
+            "No formatted output or explanation was generated. Copying is disabled. Review the underlined functions, fix the errors, then format again.",
+            blocking[0].position,
+            currentArgumentIssues
+          );
+          return;
+        }
+        result.value = formatRange(expression, 0);
+        singleLineExpression = toSingleLine(result.value);
+        resultEditor.classList.add("has-line-numbers");
+        resultEditor.style.setProperty("--source-gutter-width",
+          `calc(${Math.max(2, String(result.value.split("\n").length).length)}ch + 20px)`);
+        appendResultLineAnchor(resultView, 1);
+        renderRange(result.value, resultView, { line: 1 });
+        updateResultLineNumbers();
+        copyButton.disabled = false;
+        copySingleLineButton.disabled = singleLineExpression === null;
+        copySingleLineButton.title = singleLineExpression === null
+          ? "Unavailable: a quoted string contains a literal line break. Copy formatted preserves it."
+          : "Copy the complete expression without formatting line breaks.";
+        expandAllButton.disabled = folds.length === 0;
+        collapseAllButton.disabled = folds.length === 0;
+        updateCounts();
+        renderArgumentIssues();
+        setStatus(currentArgumentIssues.length
+          ? `Formatted with ${currentArgumentIssues.length} unverified-function ${currentArgumentIssues.length === 1 ? "warning" : "warnings"}.`
+          : "Formatted. Review the result before using it in a flow.", currentArgumentIssues.length ? "warning" : "success");
+        if (singleLineExpression === null) {
+          copyFeedback.textContent = "Copy single line is unavailable: a quoted string contains a literal line break. Copy formatted preserves it.";
+        }
+      } catch (error) {
+        if (!(error instanceof SyntaxError)) {
+          throw error;
+        }
+        if (deletedClosingDelimiter && deletedClosingDelimiter.source === source.value) {
+          const deletion = deletedClosingDelimiter;
+          const subject = deletion.functionName ? `${deletion.functionName}()` : `the '${deletion.open}' group`;
+          showFormattingError(
+            `The '${deletion.close}' closing ${subject} was removed. Its opening '${deletion.open}' is at character ${deletion.opening + 1}.`,
+            "This location is based on the closing delimiter you just deleted, before later delimiters shifted their matching pairs. Restore the missing delimiter in the correct place, then format again.",
+            deletion.opening
+          );
+          return;
+        }
+        showFormattingError(
+          error.message,
+          error.message.startsWith("Unclosed '")
+            ? "This opener is unmatched in the current expression. A missing closing delimiter earlier in a nested call can shift later matches; the highlight is not necessarily where the original omission occurred."
+            : "Check the indicated parentheses, brackets, or quotation marks, then format again. Your input has not been changed.",
+          error instanceof ExpressionSyntaxError ? error.position : null
+        );
+      }
+    }
+
+    function selectResultView(explanation) {
+      explanation = explanation && hasExplanation;
+      explanationPanel.hidden = !explanation;
+      formattedPanel.hidden = explanation;
+      formattedTab.setAttribute("aria-selected", String(!explanation));
+      explanationTab.setAttribute("aria-selected", String(explanation));
+      formattedTab.tabIndex = explanation ? -1 : 0;
+      explanationTab.tabIndex = explanation ? 0 : -1;
+      outputCount.hidden = explanation;
+      if (!explanation) scheduleResultLineNumbers();
+    }
+
+    function parseExplanation(text, budget, depth = 0) {
+      text = text.trim();
+      const raw = () => ({ kind: "raw", text });
+      budget.remaining -= 1;
+      if (depth > 40 || budget.remaining < 0) {
+        budget.warnings.add("Some parts exceed the explanation size/depth limit and are shown as source text.");
+        return raw();
+      }
+      let node;
+      let end;
+      const call = text.match(/^([A-Za-z_][A-Za-z_0-9]*)\s*\(/);
+      if (call) {
+        const opening = call[0].length - 1;
+        const group = scanGroup(text, opening);
+        const cuts = [opening, ...group.commas, group.end];
+        const args = [];
+        if (text.slice(opening + 1, group.end).trim()) {
+          for (let index = 0; index < cuts.length - 1; index += 1) {
+            args.push(parseExplanation(text.slice(cuts[index] + 1, cuts[index + 1]), budget, depth + 1));
+          }
+        }
+        node = { kind: "call", name: call[1], args, text: text.slice(0, group.end + 1) };
+        end = group.end + 1;
+      } else if (text[0] === "'" || text[0] === '"') {
+        end = scanQuoted(text, 0);
+        if (text[0] === "'") {
+          node = { kind: "literal", value: text.slice(1, end - 1).replace(/''/g, "'") };
+        } else {
+          try {
+            node = { kind: "literal", value: JSON.parse(text.slice(0, end)) };
+          } catch (error) {
+            if (!(error instanceof SyntaxError)) throw error;
+            return raw();
+          }
+        }
+      } else {
+        const literal = text.match(/^(?:true|false|null|-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?)(?=$|[\s?.\[])/i);
+        if (!literal) return raw();
+        node = { kind: "constant", text: literal[0].toLowerCase() };
+        end = literal[0].length;
+      }
+      const path = [];
+      while (end < text.length) {
+        if (/\s/.test(text[end])) { end += 1; continue; }
+        const optional = text[end] === "?";
+        if (optional) end += 1;
+        if (text[end] === "[") {
+          const group = scanGroup(text, end);
+          path.push({ optional, key: parseExplanation(text.slice(end + 1, group.end), budget, depth + 1) });
+          end = group.end + 1;
+        } else if (text[end] === ".") {
+          const property = text.slice(end + 1).match(/^[A-Za-z_][A-Za-z_0-9]*/);
+          if (!property) return raw();
+          path.push({ optional, key: { kind: "literal", value: property[0] } });
+          end += property[0].length + 1;
+        } else {
+          return raw();
+        }
+      }
+      return path.length ? { kind: "path", base: node, path } : node;
+    }
+
+    function argumentBounds(hint) {
+      return {
+        minimum: hint.minArgs ?? hint.args.filter(arg => arg !== "..." && !arg.startsWith("[")).length,
+        maximum: hint.variadic ? Infinity : hint.args.length
+      };
+    }
+
+    function collectArgumentIssues(text) {
+      // Called only after grouping validation; use original source offsets, not formatted text.
+      const issues = [];
+      for (const call of getFunctionCalls(text)) {
+        const hint = functionHints.get(call.name.toLowerCase());
+        const cuts = [call.opening, ...call.commas, call.end];
+        const empty = [];
+        const count = text.slice(call.opening + 1, call.end).trim() || call.commas.length
+          ? cuts.length - 1 : 0;
+        for (let index = 0; index < count; index += 1) {
+          if (!text.slice(cuts[index] + 1, cuts[index + 1]).trim()) empty.push(index + 1);
+        }
+        const problems = [];
+        if (hint) {
+          const { minimum, maximum } = argumentBounds(hint);
+          if (count < minimum || count > maximum) {
+            const expected = minimum === maximum ? `exactly ${minimum}`
+              : maximum === Infinity ? `at least ${minimum}` : `${minimum} to ${maximum}`;
+            problems.push(`Expects ${expected} ${maximum === 1 ? "argument" : "arguments"}; found ${count}.`);
+          }
+        }
+        if (empty.length) {
+          problems.push(`${empty.length === 1 ? "Argument" : "Arguments"} ${empty.join(", ")} ${empty.length === 1 ? "is" : "are"} empty. Supply a value or remove an unintended comma.`);
+        }
+        if (problems.length || !hint) {
+          issues.push({
+            name: call.name, position: call.start, end: call.start + call.name.length,
+            severity: problems.length ? "error" : "warning",
+            message: problems.length ? problems.join(" ")
+              : "Unrecognized by this tool's local catalog. This function may be valid; verify its name and usage in Power Automate.",
+            count, empty,
+            signature: hint ? `${hint.name}(${hint.args.join(", ")})` : null
+          });
+        }
+      }
+      return issues;
+    }
+
+    function renderArgumentIssues() {
+      const count = currentArgumentIssues.length;
+      warningBadge.hidden = count === 0;
+      inputCount.hidden = count > 0;
+      const errors = currentArgumentIssues.filter(issue => issue.severity === "error").length;
+      const warnings = count - errors;
+      const labels = [];
+      if (errors) labels.push(`${errors} ${errors === 1 ? "error" : "errors"}`);
+      if (warnings) labels.push(`${warnings} ${warnings === 1 ? "warning" : "warnings"}`);
+      warningBadge.textContent = errors && warnings ? `${count} issues` : labels.join(", ");
+      warningBadge.dataset.severity = errors ? "error" : "warning";
+      warningBadge.setAttribute("aria-label", `${labels.join(", ")}. Review one at a time.`);
+      renderSourceHighlights();
+    }
+
+    function closeArgumentPopover(restoreFocus = false) {
+      finishWarningDrag();
+      manualWarningPosition = null;
+      warningPopover.hidden = true;
+      warningBadge.setAttribute("aria-expanded", "false");
+      outlinedArgumentIndex = null;
+      if (restoreFocus && warningOpener) warningOpener.focus({ preventScroll: true });
+      renderSourceHighlights();
+    }
+
+    function argumentRects(issue) {
+      const preceding = source.value.slice(0, issue.position);
+      const line = preceding.split("\n").length;
+      const offset = issue.position - preceding.lastIndexOf("\n") - 1;
+      const row = sourceLineMeasure.children[line - 1];
+      const range = document.createRange();
+      range.setStart(row.firstChild, offset);
+      range.setEnd(row.firstChild, offset + issue.end - issue.position);
+      const origin = sourceLineMeasure.getBoundingClientRect();
+      const box = source.getBoundingClientRect();
+      const padding = parseFloat(getComputedStyle(source).paddingTop);
+      return [...range.getClientRects()].map(rect => ({
+        left: box.left + source.clientLeft + rect.left - origin.left - source.scrollLeft,
+        right: box.left + source.clientLeft + rect.right - origin.left - source.scrollLeft,
+        top: box.top + source.clientTop + padding + rect.top - origin.top - source.scrollTop,
+        bottom: box.top + source.clientTop + padding + rect.bottom - origin.top - source.scrollTop
+      }));
+    }
+
+    function scheduleWarningPosition() {
+      if (warningPopover.hidden || warningPositionFrame !== null) return;
+      warningPositionFrame = requestAnimationFrame(() => {
+        warningPositionFrame = null;
+        positionArgumentPopover();
+      });
+    }
+
+    function argumentWarningAtPoint(x, y) {
+      const box = source.getBoundingClientRect();
+      if (x < box.left + source.clientLeft || x >= box.left + source.clientLeft + source.clientWidth
+          || y < box.top + source.clientTop || y >= box.top + source.clientTop + source.clientHeight) return -1;
+      return currentArgumentIssues.findIndex(issue => argumentRects(issue).some(rect =>
+        x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom + 3));
+    }
+
+    function updateWarningCursor() {
+      source.classList.toggle("over-argument-warning",
+        warningHoverPoint !== null && argumentWarningAtPoint(warningHoverPoint.x, warningHoverPoint.y) >= 0);
+    }
+
+    function positionArgumentPopover(reveal = false) {
+      if (warningPopover.hidden) return;
+      const issue = currentArgumentIssues[activeArgumentIndex];
+      const box = source.getBoundingClientRect();
+      warningPopover.style.width = `${Math.min(420, source.clientWidth, window.innerWidth - 16)}px`;
+      warningPopover.style.maxHeight = `${Math.max(120, Math.min(300, window.innerHeight - 16))}px`;
+      if (manualWarningPosition) {
+        manualWarningPosition.left = Math.max(8, Math.min(manualWarningPosition.left, window.innerWidth - warningPopover.offsetWidth - 8));
+        manualWarningPosition.top = Math.max(8, Math.min(manualWarningPosition.top, window.innerHeight - warningPopover.offsetHeight - 8));
+        warningPopover.style.left = `${manualWarningPosition.left}px`;
+        warningPopover.style.top = `${manualWarningPosition.top}px`;
+        return;
+      }
+      let rects = argumentRects(issue);
+      let first = rects[0];
+      let last = rects[rects.length - 1];
+      if (reveal) {
+        // Scroll only the textarea, leaving room beneath the function for the overlay.
+        const visibleTop = Math.max(box.top + source.clientTop + 4, 8);
+        const visibleBottom = Math.min(box.top + source.clientTop + source.clientHeight - 4, window.innerHeight - 8);
+        const room = Math.min(warningPopover.offsetHeight + 8, Math.max(0, visibleBottom - visibleTop - 28));
+        if (last.bottom > visibleBottom - room) source.scrollTop += last.bottom - (visibleBottom - room);
+        else if (first.top < visibleTop) source.scrollTop -= visibleTop - first.top;
+        if (first.left < box.left + 4) source.scrollLeft -= box.left + 4 - first.left;
+        syncSourceHighlight();
+        rects = argumentRects(issue);
+        first = rects[0];
+        last = rects[rects.length - 1];
+      }
+      const left = Math.max(8, Math.min(first.left, window.innerWidth - warningPopover.offsetWidth - 8));
+      const top = last.bottom + 6;
+      warningPopover.style.left = `${left}px`;
+      warningPopover.style.top = `${top}px`;
+    }
+
+    function openArgumentPopover(index, outline = false, opener = null) {
+      if (!currentArgumentIssues.length) return;
+      finishWarningDrag();
+      manualWarningPosition = null;
+      activeArgumentIndex = (index + currentArgumentIssues.length) % currentArgumentIssues.length;
+      if (opener) warningOpener = opener;
+      outlinedArgumentIndex = outline ? activeArgumentIndex : null;
+      const issue = currentArgumentIssues[activeArgumentIndex];
+      warningPopover.dataset.severity = issue.severity;
+      document.getElementById("warning-title").textContent = issue.severity === "error" ? "Error at this function" : "Unverified function";
+      const name = document.createElement("strong");
+      name.textContent = `${issue.name}()`;
+      const message = document.createElement("p");
+      message.textContent = issue.message;
+      const signature = document.createElement("code");
+      signature.textContent = issue.signature;
+      warningContent.replaceChildren(name, message);
+      if (issue.signature) warningContent.append(signature);
+      warningPopover.querySelector(".warning-popover-note").textContent =
+        currentArgumentIssues.some(item => item.severity === "error")
+          ? "Fix all errors to enable formatting, explanations, and copying."
+          : "Not necessarily invalid. Formatting and copying are available; review before use.";
+      warningContent.scrollTop = 0;
+      warningPosition.textContent = `${activeArgumentIndex + 1} of ${currentArgumentIssues.length}`;
+      previousWarning.disabled = nextWarning.disabled = currentArgumentIssues.length === 1;
+      warningPopover.hidden = false;
+      warningBadge.setAttribute("aria-expanded", "true");
+      renderSourceHighlights();
+      positionArgumentPopover(true);
+    }
+
+    function finishWarningDrag() {
+      const drag = warningDrag;
+      warningDrag = null;
+      warningDragHandle.classList.remove("dragging");
+      if (drag && warningDragHandle.hasPointerCapture(drag.pointerId)) {
+        warningDragHandle.releasePointerCapture(drag.pointerId);
+      }
+    }
+
+    function canExplainCall(node) {
+      const hint = functionHints.get(node.name.toLowerCase());
+      if (!hint || node.args.some(arg => arg.kind === "raw" && !arg.text)) return false;
+      const { minimum, maximum } = argumentBounds(hint);
+      return node.args.length >= minimum && node.args.length <= maximum;
+    }
+
+    function isExplanationCall(node, name, count) {
+      return node && node.kind === "call" && node.name.toLowerCase() === name && node.args.length === count;
+    }
+
+    function explanationKey(node) {
+      function structure(part) {
+        if (part.kind === "call") return ["call", part.name.toLowerCase(), part.args.map(structure)];
+        if (part.kind === "path") return ["path", structure(part.base),
+          part.path.map(access => [access.optional, structure(access.key)])];
+        return [part.kind, part.kind === "literal" ? part.value : part.text];
+      }
+      return JSON.stringify(structure(node));
+    }
+
+    function sameExplanation(a, b) {
+      return explanationKey(a) === explanationKey(b);
+    }
+
+    function explanationInteger(node) {
+      if (!node || node.kind !== "constant" || !/^\d+$/.test(node.text)) return null;
+      const value = Number(node.text);
+      return Number.isSafeInteger(value) ? value : null;
+    }
+
+    function stableTextSource(node) {
+      if (node.kind === "literal") return typeof node.value === "string";
+      if (node.kind === "path") {
+        return stableTextSource(node.base) && node.path.every(part =>
+          part.key.kind === "literal" || explanationInteger(part.key) !== null);
+      }
+      if (node.kind !== "call" || !canExplainCall(node)) return false;
+      const name = node.name.toLowerCase();
+      // Only summarize repeated reads with known, stable meaning; do not merge clocks or unknown calls.
+      if (["variables", "parameters", "outputs", "body", "items"].includes(name)) {
+        return node.args[0].kind === "literal" && typeof node.args[0].value === "string";
+      }
+      return ["item", "triggerbody", "triggeroutputs"].includes(name);
+    }
+
+    function matchTextExtraction(node) {
+      if (!isExplanationCall(node, "substring", 3)) return null;
+      const [source, start, length] = node.args;
+      if (!stableTextSource(source) || !isExplanationCall(start, "add", 2)
+          || !isExplanationCall(length, "sub", 2) || !sameExplanation(length.args[1], start)) return null;
+      const firstIndex = start.args.find(arg => isExplanationCall(arg, "indexof", 2));
+      if (!firstIndex) return null;
+      const offset = start.args[firstIndex === start.args[0] ? 1 : 0];
+      const endIndex = length.args[0];
+      if (!isExplanationCall(endIndex, "indexof", 2)
+          || !sameExplanation(firstIndex.args[0], source) || !sameExplanation(endIndex.args[0], source)) return null;
+      const firstMarker = firstIndex.args[1];
+      const lastMarker = endIndex.args[1];
+      if (firstMarker.kind !== "literal" || typeof firstMarker.value !== "string" || !firstMarker.value
+          || lastMarker.kind !== "literal" || typeof lastMarker.value !== "string" || !lastMarker.value) return null;
+      const skip = isExplanationCall(offset, "length", 1) && sameExplanation(offset.args[0], firstMarker)
+        ? firstMarker.value.length : explanationInteger(offset);
+      // "Between" is only accurate when the start offset skips precisely the whole first marker.
+      if (skip !== firstMarker.value.length) return null;
+      return { source, first: firstMarker.value, last: lastMarker.value };
+    }
+
+    function describeTextSource(node) {
+      if (node.kind === "path" && node.path.length === 1
+          && node.path[0].key.kind === "literal" && node.path[0].key.value === "body"
+          && isExplanationCall(node.base, "outputs", 1)) {
+        return `the body from action ${JSON.stringify(node.base.args[0].value)}`;
+      }
+      // Source descriptions are shown once; optional access behavior remains in the supporting notes.
+      return describeExpression(node, new Set());
+    }
+
+    function textOperationSteps(node, warnings) {
+      if (isExplanationCall(node, "trim", 1)) {
+        const inner = textOperationSteps(node.args[0], warnings);
+        return inner ? { ...inner, steps: [...inner.steps, explanationAction("Trim leading and trailing whitespace.")], trimmed: true } : null;
+      }
+      const extraction = matchTextExtraction(node);
+      if (extraction) {
+        warnings.add("Marker searches use their first occurrence and are case-insensitive. Extraction requires the markers in the expected order; missing or out-of-order markers can cause failure or unintended text unless guarded.");
+        return {
+          steps: [
+            explanationAction(`Read ${describeTextSource(extraction.source)}.`),
+            explanationAction(`Extract text between ${JSON.stringify(extraction.first)} and ${JSON.stringify(extraction.last)}.`)
+          ],
+          extracted: true, trimmed: false
+        };
+      }
+      if (stableTextSource(node)) {
+        return { steps: [explanationAction(`Read text from ${describeTextSource(node)}.`)], extracted: false, trimmed: false };
+      }
+      return null;
+    }
+
+    function summarizeTextOperations(tree, warnings) {
+      if (isExplanationCall(tree, "if", 3)) {
+        const [condition, whenTrue, whenFalse] = tree.args;
+        const comparisons = { greater: ">", greaterorequals: ">=", less: "<", lessorequals: "<=", equals: "=" };
+        const operator = condition.kind === "call" ? comparisons[condition.name.toLowerCase()] : null;
+        if (!operator || condition.args.length !== 2 || !isExplanationCall(condition.args[0], "length", 1)) return null;
+        const threshold = explanationInteger(condition.args[1]);
+        if (threshold === null) return null;
+        const text = condition.args[0].args[0];
+        function branch(node) {
+          if (sameExplanation(node, text)) return { full: true };
+          const substring = isExplanationCall(node, "substring", 3) && explanationInteger(node.args[1]) === 0;
+          const take = isExplanationCall(node, "take", 2);
+          if ((!substring && !take) || !sameExplanation(node.args[0], text)) return null;
+          const count = explanationInteger(node.args[substring ? 2 : 1]);
+          return count === null ? null : { count };
+        }
+        const yes = branch(whenTrue);
+        const no = branch(whenFalse);
+        if (!yes || !no || (yes.full && no.full)) return null;
+        const textKnown = (text.kind === "literal" && typeof text.value === "string")
+          || isExplanationCall(text, "trim", 1) || isExplanationCall(text, "substring", 3)
+          || isExplanationCall(whenTrue, "substring", 3) || isExplanationCall(whenFalse, "substring", 3);
+        if (!textKnown) return null;
+        const steps = textOperationSteps(text, warnings);
+        if (!steps) return null;
+        const fullText = steps.extracted ? "full extracted text" : "full text";
+        const describeBranch = outcome => explanationAction(outcome.full
+          ? `Return the ${fullText}.` : `Return the first ${outcome.count} characters.`);
+        return [...steps.steps, { kind: "decision", branches: [
+          { condition: `length ${operator} ${threshold}`, steps: [describeBranch(yes)] },
+          { condition: null, steps: [describeBranch(no)] }
+        ] }];
+      }
+      if (isExplanationCall(tree, "trim", 1) || matchTextExtraction(tree)) {
+        const steps = textOperationSteps(tree, warnings);
+        if (steps) return [...steps.steps, explanationAction("Return the resulting text.")];
+      }
+      return null;
+    }
+
+    function describeNumberFormat(node, format, locale) {
+      const pattern = node.args[1];
+      const fixed = pattern.kind === "literal" && typeof pattern.value === "string"
+        ? pattern.value.match(/^0(?:\.(0+))?$/) : null;
+      const precision = fixed ? (fixed[1] || "").length : null;
+      const style = fixed
+        ? `text with exactly ${precision} decimal ${precision === 1 ? "place" : "places"} (format ${format})`
+        : `text using numeric format ${format}`;
+      return `${style}${locale ? ` using locale ${locale}` : ""}`;
+    }
+
+    function describeExpression(node, warnings, describeChild = child => describeExpression(child, warnings)) {
+      if (node.kind === "literal") return JSON.stringify(node.value);
+      if (node.kind === "constant") return node.text;
+      if (node.kind === "raw") {
+        warnings.add("Unsupported expression syntax is shown as source text rather than assigned a guessed meaning.");
+        return `source expression ${JSON.stringify(node.text)}`;
+      }
+      if (node.kind === "path") {
+        if (node.path.some(part => part.optional)) {
+          warnings.add("In property paths, ? marks an optional lookup: a missing/null parent or missing property can yield null rather than a missing-property error. This does not validate runtime types.");
+        }
+        if (node.path.every(part => part.key.kind === "literal" && typeof part.key.value === "string"
+            && /^[A-Za-z_][A-Za-z_0-9]*$/.test(part.key.value))) {
+          const names = node.path.map(part => part.key.value).join(".");
+          if (isExplanationCall(node.base, "item", 0)) return `the current item's ${names}`;
+          if (isExplanationCall(node.base, "outputs", 1) && node.path[0].key.value === "body") {
+            const action = describeChild(node.base.args[0]);
+            return node.path.length === 1 ? `the body from action ${action}`
+              : `${node.path.slice(1).map(part => part.key.value).join(".")} in the body from action ${action}`;
+          }
+          return `${names} in ${describeChild(node.base)}`;
+        }
+        const base = describeChild(node.base);
+        const path = node.path.map(part =>
+          `${part.optional ? "?" : ""}[${describeChild(part.key)}]`).join("");
+        return `${base} at path ${path}`;
+      }
+      const name = node.name.toLowerCase();
+      if (name === "not" && canExplainCall(node) && isExplanationCall(node.args[0], "empty", 1)) {
+        return `${describeChild(node.args[0].args[0])} is not empty`;
+      }
+      const args = node.args.map(describeChild);
+      if (!canExplainCall(node)) {
+        warnings.add(functionHints.has(name)
+          ? `${node.name}(): this argument pattern cannot be explained safely; the call is left explicit. This is not a full validation result.`
+          : `${node.name}(): no local explanation is available; its behavior is not inferred.`);
+        return `call ${node.name}(${args.join(", ")}) [not explained]`;
+      }
+      const [a, b, c] = args;
+      switch (name) {
+        case "if": return `(if ${a}, use ${b}; otherwise use ${c})`;
+        case "equals": return `${a} equals ${b}`;
+        case "greater": return `${a} is greater than ${b}`;
+        case "greaterorequals": return `${a} is greater than or equal to ${b}`;
+        case "less": return `${a} is less than ${b}`;
+        case "lessorequals": return `${a} is less than or equal to ${b}`;
+        case "and": return `all of these are true: ${args.map(arg => `(${arg})`).join(" AND ")}`;
+        case "or": return `at least one of these is true: ${args.map(arg => `(${arg})`).join(" OR ")}`;
+        case "not": return `NOT (${a})`;
+        case "empty": return `${a} is empty`;
+        case "contains":
+          warnings.add("Contains checks a substring, array item, or object key depending on the input type; matching is case-sensitive.");
+          return `${a} contains ${b}`;
+        case "startswith":
+        case "endswith":
+          warnings.add("Starts-with and ends-with checks are case-insensitive.");
+          return `${a} ${name === "startswith" ? "starts" : "ends"} with ${b}`;
+        case "item": return "the current item";
+        case "items": return `the current item in loop ${a}`;
+        case "variables": return `variable ${a}`;
+        case "parameters": return `parameter ${a}`;
+        case "body": return `the body from action ${a}`;
+        case "outputs": return `the outputs from action ${a}`;
+        case "triggerbody": return "the trigger body";
+        case "triggeroutputs": return "the trigger outputs";
+        case "concat": return `the text formed by joining ${args.join(" + ")}`;
+        case "coalesce":
+          warnings.add("First non-null is not the same as first non-empty: empty strings, arrays, and objects still count.");
+          return `the first non-null value from [${args.join("; ")}], in that order`;
+        case "indexof":
+        case "lastindexof":
+          warnings.add("Substring positions are zero-based and searches are case-insensitive. indexOf returns -1 if absent; see the function reference for lastIndexOf empty-string behavior.");
+          return `the ${name === "indexof" ? "first" : "last"} position of ${b} in ${a}`;
+        case "length": return `the number of characters or array items in ${a}`;
+        case "substring":
+          warnings.add("Substring start positions are zero-based. A requested range outside the string can fail; the explanation does not validate actual input lengths.");
+          return node.args.length === 3 && explanationInteger(node.args[1]) === 0
+            ? `the first ${c} characters of (${a})`
+            : `the text from (${a}), starting at zero-based position ${b}${c ? ` and taking ${c} characters` : " through the end"}`;
+        case "trim": return `${a} with leading and trailing whitespace removed`;
+        case "tolower": return `${a} converted to lowercase`;
+        case "toupper": return `${a} converted to uppercase`;
+        case "replace":
+          warnings.add("Text replacement is case-sensitive.");
+          return `${a} with ${b} replaced by ${c}`;
+        case "split": return `an array made by splitting ${a} at ${b}`;
+        case "join": return `the text made by joining array ${a} with separator ${b}`;
+        case "first": return `the first character or array item in ${a}`;
+        case "last": return `the last character or array item in ${a}`;
+        case "take": return `the first ${b} characters or array items from ${a}`;
+        case "skip": return `the remaining array after skipping ${b} items from ${a}`;
+        case "string": return `${a} converted to text`;
+        case "int": return `${a} converted to an integer`;
+        case "json": return `the JSON value parsed from ${a}`;
+        case "float": return `${a} converted to a decimal number${b ? ` using locale ${b}` : ""}`;
+        case "formatnumber":
+          warnings.add("formatNumber returns text, not a number. The format controls displayed precision and rounding; locale controls regional separators and symbols and defaults to en-US.");
+          return `${a} formatted as ${describeNumberFormat(node, b, c)}`;
+        case "slice":
+          warnings.add("Slice indexes are zero-based, the end is exclusive, and negative indexes count from the end.");
+          return `the part of ${a} from position ${b}${c ? ` up to position ${c}` : " to the end"}`;
+        case "union":
+        case "intersection":
+          warnings.add("Union/intersection accept arrays or objects, not a mixture. Duplicate object keys use the last value.");
+          return name === "union" ? `the combined collection from [${args.join("; ")}], without duplicates`
+            : `the items shared by every collection in [${args.join("; ")}]`;
+        case "add": return `the sum of (${a}) and (${b})`;
+        case "sub": return `(${a}) minus (${b})`;
+        case "mul": return `(${a}) multiplied by (${b})`;
+        case "div":
+          warnings.add("Division returns an integer when both inputs are integers.");
+          return `(${a}) divided by (${b})`;
+        case "utcnow": return `the current UTC timestamp${a ? ` in format ${a}` : ""}`;
+        case "formatdatetime": return `${a} formatted as ${b || "an ISO 8601 timestamp"}${c ? ` using locale ${c}` : ""}`;
+        case "adddays":
+        case "addhours":
+          return `${a} shifted by ${b} ${name === "adddays" ? "days" : "hours"}${c ? `, in format ${c}` : ""}`;
+        case "converttimezone":
+          warnings.add("Time-zone conversion uses Windows time-zone IDs.");
+          return `${a} converted from time zone ${b} to ${c}${args[3] ? `, in format ${args[3]}` : ""}`;
+        case "createarray":
+          warnings.add("createArray requires at least two values of the same type; array wraps a single value instead.");
+          return `an array containing [${args.join("; ")}], in that order`;
+        case "array": return `an array containing ${a} as its single item`;
+        case "sort":
+          warnings.add("Sort returns ascending order. For object arrays, the sort property must contain supported primitive values.");
+          return `${a} sorted in ascending order${b ? ` by property ${b}` : ""}`;
+        case "reverse": return `${a} with its item order reversed`;
+        case "range":
+          warnings.add("Range count is the number of items, not the last value. It must be positive and at most 100,000; start plus count must not exceed 2,147,483,647.");
+          return `an array of ${b} consecutive integers starting at ${a}`;
+        case "chunk":
+          warnings.add("Chunk length must be positive; the last chunk may be shorter.");
+          return `${a} split into an array of chunks of length ${b}`;
+        case "addproperty":
+          warnings.add("addProperty fails if the property already exists. Object functions return an updated object; they do not assign it back to a flow variable.");
+          return `${a} with new property ${b} set to ${c}`;
+        case "setproperty":
+          warnings.add("setProperty replaces an existing property or adds a missing one. Object functions return an updated object; they do not assign it back to a flow variable.");
+          return `${a} with property ${b} set to ${c}, adding it if missing`;
+        case "removeproperty":
+          warnings.add("removeProperty leaves the object unchanged if the property is absent. It does not assign the returned object back to a flow variable.");
+          return `${a} without property ${b}`;
+        case "addminutes":
+        case "addseconds":
+          return `${a} shifted by ${b} ${name === "addminutes" ? "minutes" : "seconds"}${c ? `, in format ${c}` : ""}`;
+        case "addtotime":
+          warnings.add("Time units for addToTime are Second, Minute, Hour, Day, Week, Month, or Year.");
+          return `${a} shifted by ${b} units of ${c}${args[3] ? `, in format ${args[3]}` : ""}`;
+        case "startofday":
+          warnings.add("startOfDay uses the supplied timestamp; it is not a time-zone conversion.");
+          return `the start of the day for ${a}${b ? `, in format ${b}` : ""}`;
+        case "convertfromutc":
+        case "converttoutc":
+          warnings.add("Time-zone conversion uses Windows time-zone IDs.");
+          return `${a} converted ${name === "convertfromutc" ? `from UTC to ${b}` : `from ${b} to UTC`}${c ? `, in format ${c}` : ""}`;
+        case "datedifference": return `the time-span string for (${b}) minus (${a})`;
+        case "ticks":
+          warnings.add("One tick is 100 nanoseconds (10,000,000 ticks per second). The count starts at midnight on January 1, 0001, not the Unix epoch.");
+          return `the integer tick count for ${a}`;
+        case "dayofweek":
+          warnings.add("Weekday numbers run from Sunday = 0 through Saturday = 6. This function does not convert the timestamp to another time zone.");
+          return `the weekday number for ${a}`;
+        case "parsedatetime":
+          warnings.add("parseDateTime uses en-US when locale is omitted. Its format describes the input text, not the desired output format.");
+          return `${a} parsed as a timestamp${b ? ` using locale ${b}` : ""}${c ? ` and input format ${c}` : ""}`;
+        case "min":
+        case "max":
+          return args.length === 1 ? `the ${name === "min" ? "lowest" : "highest"} number from ${a}`
+            : `the ${name === "min" ? "lowest" : "highest"} of [${args.join("; ")}]`;
+        case "mod":
+          warnings.add("The divisor for mod cannot be zero.");
+          return `the remainder of (${a}) divided by (${b})`;
+        case "bool":
+          warnings.add("Boolean conversion requires a supported input value and can fail; the explanation does not apply JavaScript truthiness.");
+          return `${a} converted to a Boolean`;
+        case "isint": return `${a} represents an integer`;
+        case "isfloat":
+          warnings.add("isFloat uses invariant culture unless a locale is supplied.");
+          return `${a} represents a floating-point number${b ? ` using locale ${b}` : ""}`;
+        case "base64":
+          warnings.add("Base64 encoding is not encryption.");
+          return `${a} encoded as Base64 text`;
+        case "base64tostring": return `${a} decoded from Base64 into text`;
+        case "uricomponent": return `${a} encoded as a URI component`;
+        case "uricomponenttostring": return `${a} decoded from URI-component encoding into text`;
+        case "guid": return `a newly generated GUID${a ? ` in format ${a}` : ""}`;
+        case "result":
+          warnings.add("result returns first-level action results for the named Scope or loop; nested actions are not recursively expanded.");
+          return `the array of first-level action results from scope or loop ${a}`;
+        case "xml":
+          warnings.add("JSON-to-XML conversion requires one root property, which cannot be an array.");
+          return `${a} converted to XML`;
+        case "xpath":
+          warnings.add("XPath returns matching nodes or computed values depending on the query. The query is shown literally, not executed or independently interpreted.");
+          return `the nodes or values selected from ${a} by XPath ${b}`;
+        default: {
+          const hint = functionHints.get(name);
+          warnings.add("Some functions use a reference-style description with explicit arguments instead of a tailored sentence.");
+          return `${hint.name}(${args.join(", ")}) [${hint.description}]`;
+        }
+      }
+    }
+
+    function explanationAction(text, steps = []) {
+      return { kind: "action", text, steps };
+    }
+
+    function summarizeExpression(tree, warnings) {
+      const recognized = summarizeTextOperations(tree, warnings);
+      if (recognized !== null) return recognized;
+      const steps = [];
+      const counts = new Map();
+      const keys = new WeakMap();
+      const stable = new WeakMap();
+      const labelCounts = new Map();
+      const predicates = new Set(["equals", "greater", "greaterorequals", "less", "lessorequals",
+        "and", "or", "not", "empty", "contains", "startswith", "endswith", "isint", "isfloat"]);
+      const transformations = new Set(["trim", "tolower", "toupper", "replace", "substring", "slice",
+        "split", "join", "first", "last", "take", "skip", "string", "int", "float", "json",
+        "formatdatetime", "formatnumber", "ticks", "dayofweek", "adddays", "addhours", "converttimezone", "add", "sub", "mul", "div",
+        "array", "sort", "reverse", "chunk", "addproperty", "setproperty", "removeproperty",
+        "addminutes", "addseconds", "addtotime", "startofday", "convertfromutc", "converttoutc",
+        "parsedatetime", "bool", "base64", "base64tostring", "uricomponent", "uricomponenttostring", "xml", "xpath"]);
+      function children(node) {
+        if (node.kind === "call") return node.args;
+        if (node.kind === "path") return [node.base, ...node.path.map(part => part.key)];
+        return [];
+      }
+      function key(node) {
+        if (!keys.has(node)) keys.set(node, explanationKey(node));
+        return keys.get(node);
+      }
+      function isStable(node) {
+        if (!stable.has(node)) {
+          stable.set(node, node.kind !== "raw"
+            && (node.kind !== "call" || (canExplainCall(node) && !["utcnow", "guid"].includes(node.name.toLowerCase())))
+            && children(node).every(isStable));
+        }
+        return stable.get(node);
+      }
+      function count(node) {
+        counts.set(key(node), (counts.get(key(node)) || 0) + 1);
+        children(node).forEach(count);
+      }
+      function label(node) {
+        const names = {
+          if: "selected value", trim: "trimmed text", tolower: "lowercase text", toupper: "uppercase text",
+          concat: "combined text", formatnumber: "formatted text", formatdatetime: "formatted date",
+          substring: "extracted text", slice: "extracted text", replace: "updated text",
+          split: "text items", join: "joined text", createarray: "array items", array: "array items",
+          union: "combined collection", intersection: "shared items", sort: "sorted items", reverse: "reversed items",
+          add: "calculated number", sub: "calculated number", mul: "calculated number", div: "calculated number",
+          min: "minimum number", max: "maximum number", length: "length", ticks: "tick count", dayofweek: "weekday number",
+          coalesce: "fallback value", json: "parsed value", xml: "XML value", xpath: "selected XML value",
+          adddays: "adjusted timestamp", addhours: "adjusted timestamp", addminutes: "adjusted timestamp",
+          addseconds: "adjusted timestamp", addtotime: "adjusted timestamp", parsedatetime: "parsed timestamp"
+        };
+        const base = node.kind === "call" ? (names[node.name.toLowerCase()]
+          || (predicates.has(node.name.toLowerCase()) ? "condition result" : "intermediate result"))
+          : node.kind === "path" ? "source value" : "intermediate result";
+        const count = (labelCounts.get(base) || 0) + 1;
+        labelCounts.set(base, count);
+        warnings.add("Named intermediate results are reading aids only; they do not create flow variables or change when the original expression is evaluated.");
+        return count === 1 ? base : `${base} ${count}`;
+      }
+      function reference(node, scope, output, allowLabel = true) {
+        const existing = isStable(node) && scope.get(key(node));
+        if (existing) return existing;
+        if (isExplanationCall(node, "if", 3) && canExplainCall(node)) {
+          const name = label(node);
+          emit(node, new Map(scope), output, name);
+          if (isStable(node)) scope.set(key(node), name);
+          return name;
+        }
+        const extraction = matchTextExtraction(node);
+        if (extraction) {
+          const name = label(node);
+          textOperationSteps(node, warnings);
+          output.push(explanationAction(`Set ${name} to the text between ${JSON.stringify(extraction.first)} and ${JSON.stringify(extraction.last)} in ${describeTextSource(extraction.source)}.`));
+          scope.set(key(node), name);
+          return name;
+        }
+        const chain = node.kind === "call" && canExplainCall(node) && transformations.has(node.name.toLowerCase())
+          && node.args[0].kind === "call" && canExplainCall(node.args[0])
+          && transformations.has(node.args[0].name.toLowerCase());
+        if (chain && isStable(node) && counts.get(key(node)) > 1) {
+          const name = label(node);
+          const preparation = explanationAction(`Prepare ${name}:`);
+          output.push(preparation);
+          emit(node, new Map(scope), preparation.steps, name);
+          scope.set(key(node), name);
+          return name;
+        }
+        const phrase = describeExpression(node, warnings, child => reference(child, scope, output));
+        const operation = node.kind === "call" && !stableTextSource(node) && canExplainCall(node);
+        const repeated = operation && isStable(node) && counts.get(key(node)) > 1;
+        const complex = (operation || node.kind === "path") && phrase.length > 100;
+        if (allowLabel && (repeated || complex)) {
+          const name = label(node);
+          output.push(explanationAction(`Set ${name} to ${phrase}.`));
+          if (isStable(node)) scope.set(key(node), name);
+          return name;
+        }
+        return phrase;
+      }
+      function transformInstruction(node, args) {
+        const [, b, c, d] = args;
+        switch (node.name.toLowerCase()) {
+          case "trim": return "Trim leading and trailing whitespace.";
+          case "tolower": return "Convert to lowercase.";
+          case "toupper": return "Convert to uppercase.";
+          case "replace": return `Replace ${b} with ${c}.`;
+          case "substring": return explanationInteger(node.args[1]) === 0 && c
+            ? `Keep the first ${c} characters.`
+            : `Extract ${c ? `${c} characters` : "text through the end"} starting at position ${b}.`;
+          case "slice": return `Keep text from position ${b}${c ? ` up to (but not including) position ${c}` : " to the end"}.`;
+          case "split": return `Split into an array using ${b} as the separator.`;
+          case "join": return `Join the array into text using ${b} between items.`;
+          case "first": return "Keep the first character or array item.";
+          case "last": return "Keep the last character or array item.";
+          case "take": return `Keep the first ${b} characters or array items.`;
+          case "skip": return `Remove the first ${b} array items.`;
+          case "string": return "Convert to text.";
+          case "int": return "Convert to an integer.";
+          case "float": return `Convert to a decimal number${b ? ` using locale ${b}` : ""}.`;
+          case "formatnumber": return `Format as ${describeNumberFormat(node, b, c)}.`;
+          case "json": return "Parse as a JSON value.";
+          case "formatdatetime": return `Format as ${b || "an ISO 8601 timestamp"}${c ? ` using locale ${c}` : ""}.`;
+          case "adddays": return `Shift the timestamp by ${b} days${c ? ` and use format ${c}` : ""}.`;
+          case "addhours": return `Shift the timestamp by ${b} hours${c ? ` and use format ${c}` : ""}.`;
+          case "converttimezone": return `Convert from time zone ${b} to ${c}${d ? ` and use format ${d}` : ""}.`;
+          case "add": return `Add ${b}.`;
+          case "sub": return `Subtract ${b}.`;
+          case "mul": return `Multiply by ${b}.`;
+          case "div": return `Divide by ${b}.`;
+          case "array": return "Wrap the value as the single item of an array.";
+          case "sort": return `Sort the array in ascending order${b ? ` by property ${b}` : ""}.`;
+          case "reverse": return "Reverse the array's item order.";
+          case "chunk": return `Split into chunks of length ${b} and return them as an array.`;
+          case "addproperty": return `Add new property ${b} with value ${c}; fail if it already exists.`;
+          case "setproperty": return `Set property ${b} to ${c}, adding it if missing.`;
+          case "removeproperty": return `Remove property ${b} if present.`;
+          case "addminutes": return `Shift the timestamp by ${b} minutes${c ? ` and use format ${c}` : ""}.`;
+          case "addseconds": return `Shift the timestamp by ${b} seconds${c ? ` and use format ${c}` : ""}.`;
+          case "addtotime": return `Shift the timestamp by ${b} units of ${c}${d ? ` and use format ${d}` : ""}.`;
+          case "startofday": return `Take the start of that day${b ? ` in format ${b}` : ""}.`;
+          case "ticks": return "Convert the timestamp to an integer count of 100-nanosecond intervals since midnight on January 1, 0001.";
+          case "dayofweek": return "Get the weekday number (Sunday = 0 through Saturday = 6).";
+          case "convertfromutc": return `Convert from UTC to time zone ${b}${c ? `, in format ${c}` : ""}.`;
+          case "converttoutc": return `Convert from time zone ${b} to UTC${c ? `, in format ${c}` : ""}.`;
+          case "parsedatetime": return `Parse as a timestamp${b ? ` using locale ${b}` : ""}${c ? ` and input format ${c}` : ""}.`;
+          case "bool": return "Convert to a Boolean true or false.";
+          case "base64": return "Encode as Base64 text.";
+          case "base64tostring": return "Decode Base64 into text.";
+          case "uricomponent": return "Encode as a URI component.";
+          case "uricomponenttostring": return "Decode URI-component encoding into text.";
+          case "xml": return "Convert the JSON content to XML.";
+          case "xpath": return `Apply XPath ${b} to select nodes or compute a value.`;
+        }
+      }
+      function emit(node, scope, output, target = null) {
+        if (isExplanationCall(node, "if", 3) && canExplainCall(node)) {
+          const condition = reference(node.args[0], scope, output);
+          const yes = [];
+          const no = [];
+          emit(node.args[1], new Map(scope), yes, target);
+          emit(node.args[2], new Map(scope), no, target);
+          const branches = [{ condition, steps: yes }];
+          // Flatten only when the later condition has no preparations that must remain in its branch.
+          if (no.length === 1 && no[0].kind === "decision") {
+            branches.push(...no[0].branches);
+          } else {
+            branches.push({ condition: null, steps: no });
+          }
+          output.push({ kind: "decision", branches });
+          return;
+        }
+        const chain = [];
+        let base = node;
+        while (base.kind === "call" && canExplainCall(base) && transformations.has(base.name.toLowerCase())
+            && !scope.has(key(base)) && !matchTextExtraction(base)) {
+          chain.unshift(base);
+          base = base.args[0];
+        }
+        if (chain.length) {
+          const initial = reference(base, scope, output);
+          output.push(explanationAction(`Read ${initial}.`));
+          for (const operation of chain) {
+            const args = ["the result", ...operation.args.slice(1).map(arg => reference(arg, scope, output))];
+            let index = 0;
+            describeExpression(operation, warnings, () => args[index++]);
+            output.push(explanationAction(transformInstruction(operation, args)));
+          }
+          output.push(explanationAction(target ? `Set ${target} to the result.` : "Return the result."));
+          return;
+        }
+        if (isExplanationCall(node, "coalesce", node.args?.length) && canExplainCall(node)) {
+          warnings.add("First non-null is not the same as first non-empty: empty strings, arrays, and objects still count.");
+          const candidates = node.args.map(arg => reference(arg, scope, output));
+          output.push({ kind: "choice", text: `${target ? `Set ${target} to` : "Return"} the first non-null value, in this order:`, candidates });
+          return;
+        }
+        if (isExplanationCall(node, "concat", node.args?.length) && canExplainCall(node)) {
+          const parts = node.args.map(arg => reference(arg, scope, output));
+          output.push(explanationAction(`Join ${parts.join(" + ")}, in that order.`));
+          output.push(explanationAction(target ? `Set ${target} to the combined text.` : "Return the combined text."));
+          return;
+        }
+        const value = reference(node, scope, output, false);
+        const boolean = node.kind === "call" && canExplainCall(node) && predicates.has(node.name.toLowerCase());
+        output.push(explanationAction(target ? `Set ${target} to ${value}.` : `Return ${boolean ? "whether " : ""}${value}.`));
+      }
+      count(tree);
+      emit(tree, new Map(), steps);
+      return steps;
+    }
+
+    function buildExplanationModel(tree, warnings) {
+      const names = new Set();
+      let incomplete = false;
+      function inspect(node) {
+        if (node.kind === "raw") incomplete = true;
+        if (node.kind === "call") {
+          names.add(node.name.toLowerCase());
+          if (!canExplainCall(node)) incomplete = true;
+          node.args.forEach(inspect);
+        } else if (node.kind === "path") {
+          inspect(node.base);
+          node.path.forEach(part => inspect(part.key));
+        }
+      }
+      inspect(tree);
+      const summaries = [
+        [["if"], "Choose a result based on conditional checks."],
+        [["coalesce"], "Choose the first available non-null value."],
+        [["concat"], names.has("formatnumber")
+          ? "Format numeric values as text and combine the text parts."
+          : "Combine text parts into a single string."],
+        [["trim", "tolower", "toupper", "replace"], "Transform text and return the resulting value."],
+        [["substring", "slice"], "Extract a portion of text and return it."],
+        [["formatnumber"], "Format a number as text using the specified numeric format."],
+        [["formatdatetime", "adddays", "addhours", "addminutes", "addseconds", "addtotime", "startofday",
+          "convertfromutc", "converttoutc", "converttimezone", "parsedatetime"], "Process a timestamp and return the resulting date or time text."],
+        [["utcnow"], "Return the current UTC timestamp."],
+        [["datedifference"], "Calculate the time span between two timestamps."],
+        [["ticks"], "Convert a timestamp to its numeric tick count."],
+        [["dayofweek"], "Return the weekday number for a timestamp."],
+        [["add", "sub", "mul", "div", "mod", "min", "max"], "Calculate and return a numeric result."],
+        [["equals", "greater", "greaterorequals", "less", "lessorequals", "and", "or", "not", "empty",
+          "contains", "startswith", "endswith", "isint", "isfloat"], "Check a condition and return true or false."],
+        [["array", "createarray", "range"], "Build and return an array of values."],
+        [["sort"], "Sort array items in ascending order."],
+        [["reverse"], "Reverse the order of array items."],
+        [["union"], "Combine collections without duplicate items."],
+        [["intersection"], "Return items shared by all supplied collections."],
+        [["chunk"], "Divide text or an array into chunks."],
+        [["split"], "Split text into an array using a separator."],
+        [["join"], "Join array items into text using a separator."],
+        [["first", "last", "take", "skip"], "Select part of the supplied collection."],
+        [["length"], "Count the characters or array items in a value."],
+        [["indexof", "lastindexof"], "Find the position of a substring within text."],
+        [["addproperty", "setproperty", "removeproperty"], "Return an object with the specified property changes."],
+        [["string", "int", "float", "bool", "json", "xml"], "Convert the supplied value to another representation."],
+        [["base64", "uricomponent"], "Encode a value as text."],
+        [["base64tostring", "uricomponenttostring"], "Decode encoded content into text."],
+        [["xpath"], "Select nodes or compute values from XML using XPath."],
+        [["guid"], "Generate and return a new unique identifier."],
+        [["result"], "Read the first-level action results from a scope or loop."],
+        [["variables", "parameters", "outputs", "body", "triggerbody", "triggeroutputs", "item", "items"],
+          "Read and return the referenced flow value."]
+      ];
+      const rootName = tree.kind === "call" ? tree.name.toLowerCase() : null;
+      const summary = incomplete ? "Describe the supported logic; unsupported parts require review."
+        : summaries.find(([functions]) => functions.includes(rootName))?.[1]
+          || (tree.kind === "path" ? "Read and return a value from the specified property path."
+            : "Return the supplied literal value.");
+      const steps = summarizeExpression(tree, warnings);
+      const notes = [...warnings];
+      notes.push("This is a local, rule-based explanation, not a run result. Runtime types and flow context are not validated.");
+      return { summary, steps, notes };
+    }
+
+    function renderExplanation(model) {
+      explanationSummary.textContent = model.summary;
+      explanationText.replaceChildren();
+      function renderSteps(steps) {
+        const list = document.createElement("ol");
+        list.className = "explanation-steps";
+        for (const step of steps) {
+          const item = document.createElement("li");
+          if (step.kind === "decision") {
+            step.branches.forEach((branch, index) => {
+              const section = document.createElement("div");
+              section.className = "explanation-branch";
+              const heading = document.createElement("p");
+              heading.className = "explanation-branch-title";
+              heading.textContent = branch.condition === null ? "Otherwise:"
+                : `${index === 0 ? "If" : "Otherwise if"} ${branch.condition}:`;
+              section.append(heading, renderSteps(branch.steps));
+              item.append(section);
+            });
+          } else {
+            const text = document.createElement("p");
+            text.className = "explanation-action";
+            text.textContent = step.text;
+            item.append(text);
+            if (step.kind === "choice") {
+              const choices = document.createElement("ol");
+              choices.className = "explanation-steps explanation-substeps";
+              for (const candidate of step.candidates) {
+                const choice = document.createElement("li");
+                choice.textContent = candidate;
+                choices.append(choice);
+              }
+              item.append(choices);
+            } else if (step.steps.length) {
+              const nested = renderSteps(step.steps);
+              nested.classList.add("explanation-substeps");
+              item.append(nested);
+            }
+          }
+          list.append(item);
+        }
+        return list;
+      }
+      explanationText.append(renderSteps(model.steps));
+      explanationWarnings.replaceChildren();
+      for (const note of model.notes) {
+        const paragraph = document.createElement("p");
+        paragraph.textContent = note;
+        explanationWarnings.append(paragraph);
+      }
+      explanationWarnings.hidden = false;
+    }
+
+    function explainExpression() {
+      // Use the same structural diagnostics and retain a complete formatted view for copying.
+      formatExpression();
+      if (!result.value) return;
+      const warnings = new Set(currentArgumentIssues.map(issue =>
+        `Warning at character ${issue.position + 1}: ${issue.name}() - ${issue.message}`));
+      let expression = source.value.trim();
+      if (expression.startsWith("@{") && scanGroup(expression, 1).end === expression.length - 1) {
+        expression = expression.slice(2, -1).trim();
+        warnings.add("The @{...} wrapper inserts the expression's value into text; the steps below describe that inner value.");
+      } else if (expression.startsWith("@") && !expression.startsWith("@{") && !expression.startsWith("@@")) {
+        expression = expression.slice(1);
+      }
+      const tree = parseExplanation(expression, { remaining: 1000, warnings });
+      renderExplanation(buildExplanationModel(tree, warnings));
+      hasExplanation = true;
+      resultTabs.hidden = false;
+      selectResultView(true);
+      setStatus(currentArgumentIssues.length
+        ? `Explained with ${currentArgumentIssues.length} unverified-function ${currentArgumentIssues.length === 1 ? "warning" : "warnings"}.`
+        : warnings.size ? "Explanation generated. Review the notes for limitations." : "Explanation generated locally. Review it against your flow.",
+        currentArgumentIssues.length ? "warning" : "");
+      explanationPanel.focus({ preventScroll: true });
+      explanationPanel.scrollIntoView({ block: "nearest" });
+    }
+
+    function toSingleLine(text) {
+      let compact = "";
+      for (let index = 0; index < text.length;) {
+        if (text[index] === "'" || text[index] === '"') {
+          const end = scanQuoted(text, index);
+          const literal = text.slice(index, end);
+          // Removing a literal line break would change the string's value.
+          if (/[\r\n\u2028\u2029]/.test(literal)) return null;
+          compact += literal;
+          index = end;
+        } else if (/\s/.test(text[index])) {
+          do { index += 1; } while (index < text.length && /\s/.test(text[index]));
+          const previous = compact[compact.length - 1];
+          const next = text[index];
+          if (previous && !/\s/.test(previous) && !"([{".includes(previous)
+              && next && !")]},([{".includes(next)) {
+            compact += " ";
+          }
+        } else if (text[index] === ",") {
+          compact = compact.trimEnd() + ", ";
+          index += 1;
+        } else if ("()[]{}".includes(text[index])) {
+          compact = compact.trimEnd() + text[index];
+          index += 1;
+        } else {
+          compact += text[index];
+          index += 1;
+        }
+      }
+      return compact.trim();
+    }
+
+    function resetCopyFeedback() {
+      copyAttempt += 1;
+      clearTimeout(copyFeedbackTimer);
+      copyFeedbackTimer = null;
+      copyButton.textContent = "Copy formatted";
+      copySingleLineButton.textContent = "Copy single line";
+      copyButton.removeAttribute("data-copy-state");
+      copySingleLineButton.removeAttribute("data-copy-state");
+      copyFeedback.textContent = "";
+      copyFeedback.removeAttribute("data-kind");
+    }
+
+    function showCopyFeedback(button, message, kind, attempt) {
+      if (attempt !== copyAttempt) return;
+      copyFeedback.textContent = message;
+      copyFeedback.dataset.kind = kind;
+      button.textContent = kind === "success" ? "Copied!" : "Copy failed";
+      button.dataset.copyState = kind;
+      copyFeedbackTimer = setTimeout(() => {
+        button.textContent = button === copyButton ? "Copy formatted" : "Copy single line";
+        button.removeAttribute("data-copy-state");
+      }, 1500);
+    }
+
+    async function copyResult(singleLine = false) {
+      resetCopyFeedback();
+      const attempt = copyAttempt;
+      const button = singleLine ? copySingleLineButton : copyButton;
+      const text = singleLine ? singleLineExpression : result.value;
+      if (!text) {
+        showCopyFeedback(button, "Format an expression before copying it.", "error", attempt);
+        return;
+      }
+      button.textContent = "Copying...";
+      copyFeedback.textContent = "Copying to clipboard...";
+      const message = singleLine ? "Single-line expression copied to clipboard." : "Formatted expression copied to clipboard.";
+      if (navigator.clipboard) {
+        try {
+          await navigator.clipboard.writeText(text);
+          showCopyFeedback(button, message, "success", attempt);
+          return;
+        } catch (error) {
+          if (attempt !== copyAttempt) return;
+          if (!(error instanceof DOMException) || !["NotAllowedError", "SecurityError"].includes(error.name)) {
+            showCopyFeedback(button, "Copy failed. Try again or copy from the plain-text result.", "error", attempt);
+            throw error;
+          }
+        }
+      }
+      if (attempt !== copyAttempt) return;
+      const fallback = singleLine ? singleLineResult : result;
+      if (singleLine) {
+        singleLineResult.value = text;
+        singleLineFallback.hidden = false;
+      }
+      result.closest("details").open = true;
+      fallback.focus();
+      fallback.select();
+      let copied = false;
+      try {
+        copied = document.execCommand("copy");
+      } catch (error) {
+        if (!(error instanceof DOMException) || !["NotAllowedError", "SecurityError"].includes(error.name)) {
+          showCopyFeedback(button, "Copy failed. Copy the selected expression manually.", "error", attempt);
+          throw error;
+        }
+      }
+      showCopyFeedback(
+        button,
+        copied ? message : `Copy was blocked; the ${singleLine ? "single-line" : "formatted"} expression is selected below. Copy it manually.`,
+        copied ? "success" : "error",
+        attempt
+      );
+    }
+
+    formatButton.addEventListener("click", () => formatExpression());
+    document.getElementById("explain").addEventListener("click", explainExpression);
+    formattedTab.addEventListener("click", () => selectResultView(false));
+    explanationTab.addEventListener("click", () => selectResultView(true));
+    resultTabs.addEventListener("keydown", event => {
+      if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+      event.preventDefault();
+      const explanation = event.key === "End" || (event.key !== "Home" && document.activeElement === formattedTab);
+      selectResultView(explanation);
+      (explanation ? explanationTab : formattedTab).focus();
+    });
+    copyButton.addEventListener("click", () => copyResult());
+    copySingleLineButton.addEventListener("click", () => copyResult(true));
+    goToIssueButton.addEventListener("click", () => {
+      if (issuePosition !== null) {
+        source.focus({ preventScroll: true });
+        source.setSelectionRange(issuePosition, issuePosition + 1);
+        source.scrollIntoView({ block: "center", behavior: "instant" });
+        requestAnimationFrame(syncSourceHighlight);
+      }
+    });
+    reviewFunctionIssues.addEventListener("click", () => {
+      const index = currentArgumentIssues.findIndex(issue => issue.severity === "error");
+      source.scrollIntoView({ block: "center", behavior: "instant" });
+      source.focus({ preventScroll: true });
+      source.setSelectionRange(currentArgumentIssues[index].position, currentArgumentIssues[index].position);
+      openArgumentPopover(index, true, source);
+      document.getElementById("close-warning").focus({ preventScroll: true });
+    });
+    expandAllButton.addEventListener("click", () => {
+      folds.forEach((fold) => setFoldExpanded(fold, true));
+    });
+    collapseAllButton.addEventListener("click", () => {
+      folds.forEach((fold) => setFoldExpanded(fold, false));
+    });
+    document.getElementById("clear").addEventListener("click", () => {
+      source.value = "";
+      pendingDeletion = null;
+      deletedClosingDelimiter = null;
+      resetResult();
+      updateCounts();
+      setStatus("Cleared.", "");
+      source.focus();
+    });
+    document.getElementById("sample").addEventListener("click", () => {
+      source.value = sampleExpression;
+      pendingDeletion = null;
+      deletedClosingDelimiter = null;
+      updateCounts();
+      formatExpression();
+      source.focus();
+    });
+    source.addEventListener("beforeinput", captureClosingDeletion);
+    source.addEventListener("input", () => {
+      deletedClosingDelimiter = pendingDeletion && pendingDeletion.source === source.value ? pendingDeletion : null;
+      pendingDeletion = null;
+      resetResult();
+      updateCounts();
+      setStatus("Ready to format.", "");
+    });
+    source.addEventListener("scroll", syncSourceHighlight);
+    warningBadge.addEventListener("click", event => {
+      if (!warningPopover.hidden) closeArgumentPopover();
+      else {
+        openArgumentPopover(activeArgumentIndex, false, warningBadge);
+        if (event.detail === 0) document.getElementById("close-warning").focus({ preventScroll: true });
+      }
+    });
+    previousWarning.addEventListener("click", () => openArgumentPopover(activeArgumentIndex - 1));
+    nextWarning.addEventListener("click", () => openArgumentPopover(activeArgumentIndex + 1));
+    warningDragHandle.addEventListener("pointerdown", event => {
+      if (event.button !== 0 || !event.isPrimary || event.target.closest("button")) return;
+      event.preventDefault();
+      const rect = warningPopover.getBoundingClientRect();
+      warningDrag = { pointerId: event.pointerId, x: event.clientX, y: event.clientY, left: rect.left, top: rect.top };
+      warningDragHandle.setPointerCapture(event.pointerId);
+      warningDragHandle.focus({ preventScroll: true });
+    });
+    warningDragHandle.addEventListener("pointermove", event => {
+      if (!warningDrag || event.pointerId !== warningDrag.pointerId) return;
+      const dx = event.clientX - warningDrag.x;
+      const dy = event.clientY - warningDrag.y;
+      if (!warningDragHandle.classList.contains("dragging") && Math.hypot(dx, dy) < 3) return;
+      warningDragHandle.classList.add("dragging");
+      manualWarningPosition = { left: warningDrag.left + dx, top: warningDrag.top + dy };
+      positionArgumentPopover();
+    });
+    for (const event of ["pointerup", "pointercancel", "lostpointercapture"]) {
+      warningDragHandle.addEventListener(event, finishWarningDrag);
+    }
+    warningDragHandle.addEventListener("keydown", event => {
+      if (event.target !== warningDragHandle || !["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(event.key)) return;
+      event.preventDefault();
+      const rect = warningPopover.getBoundingClientRect();
+      const distance = event.shiftKey ? 1 : 10;
+      manualWarningPosition = {
+        left: rect.left + (event.key === "ArrowRight" ? distance : event.key === "ArrowLeft" ? -distance : 0),
+        top: rect.top + (event.key === "ArrowDown" ? distance : event.key === "ArrowUp" ? -distance : 0)
+      };
+      positionArgumentPopover();
+    });
+    document.getElementById("close-warning").addEventListener("click", () => closeArgumentPopover(true));
+    source.addEventListener("click", event => {
+      if (source.selectionStart !== source.selectionEnd) {
+        closeArgumentPopover();
+        return;
+      }
+      const index = argumentWarningAtPoint(event.clientX, event.clientY);
+      if (index >= 0) openArgumentPopover(index, true, source);
+      else closeArgumentPopover();
+    });
+    source.addEventListener("mousemove", event => {
+      warningHoverPoint = event.buttons ? null : { x: event.clientX, y: event.clientY };
+      updateWarningCursor();
+    });
+    source.addEventListener("mouseleave", () => {
+      warningHoverPoint = null;
+      updateWarningCursor();
+    });
+    source.addEventListener("mousedown", () => {
+      warningHoverPoint = null;
+      updateWarningCursor();
+    });
+    document.addEventListener("pointerdown", event => {
+      if (!warningPopover.hidden && event.target !== source
+          && !warningBadge.contains(event.target) && !warningPopover.contains(event.target)) closeArgumentPopover();
+    });
+    document.addEventListener("focusin", event => {
+      if (!warningPopover.hidden && event.target !== source && event.target !== warningBadge
+          && !warningPopover.contains(event.target)) closeArgumentPopover();
+    });
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape" && !warningPopover.hidden) {
+        event.preventDefault();
+        closeArgumentPopover(true);
+      }
+    });
+    window.addEventListener("scroll", scheduleWarningPosition, { passive: true });
+    window.addEventListener("resize", scheduleWarningPosition);
+    resultView.addEventListener("scroll", syncResultLineNumbers);
+    new ResizeObserver(scheduleResultLineNumbers).observe(resultView);
+    for (const event of ["focus", "blur", "click", "keyup", "select"]) {
+      source.addEventListener(event, renderSourceHighlights);
+    }
+    document.addEventListener("selectionchange", renderSourceHighlights);
+    new ResizeObserver(updateSourceLineNumbers).observe(source);
+    source.addEventListener("keydown", (event) => {
+      if (event.altKey && event.key === "ArrowDown") {
+        const index = currentArgumentIssues.findIndex(issue =>
+          source.selectionStart >= issue.position && source.selectionStart <= issue.end);
+        if (index >= 0) {
+          event.preventDefault();
+          openArgumentPopover(index, true, source);
+          document.getElementById("close-warning").focus({ preventScroll: true });
+        }
+        return;
+      }
+      if (event.key !== "Escape" && event.key !== "Tab") closeArgumentPopover();
+      if (event.ctrlKey && event.key === "Enter") {
+        formatExpression();
+      }
+    });
+    updateSourceLineNumbers();
+  </script>
+</body>
+</html>
