@@ -2,7 +2,7 @@
 
 Make long Power Automate expressions easier to read, explore, and explain.
 
-**v0.2.6 (Pilot)** | [Try it online](https://akmsft.github.io/power-automate/tools/expression-formatter/) | [Download the HTML file](https://github.com/akmsft/power-automate/releases/download/expression-formatter-v0.2.6/power-automate-expression-formatter.html)
+**v0.2.7 (Pilot)** | [Try it online](https://akmsft.github.io/power-automate/tools/expression-formatter/) | [Download the HTML file](https://github.com/akmsft/power-automate/releases/download/expression-formatter-v0.2.7/power-automate-expression-formatter.html)
 
 ![Power Automate Expression Formatter showing a formatted sample expression](images/screenshot.png)
 
@@ -10,7 +10,7 @@ Make long Power Automate expressions easier to read, explore, and explain.
 
 **Online:** open the [live tool](https://akmsft.github.io/power-automate/tools/expression-formatter/) in a modern browser.
 
-**Offline:** download `power-automate-expression-formatter.html` from the [release](https://github.com/akmsft/power-automate/releases/tag/expression-formatter-v0.2.6), then double-click it to open it in Edge or Chrome. No installation, account, internet connection, or additional files are needed to run the downloaded tool.
+**Offline:** download `power-automate-expression-formatter.html` from the [release](https://github.com/akmsft/power-automate/releases/tag/expression-formatter-v0.2.7), then double-click it to open it in Edge or Chrome. No installation, account, internet connection, or additional files are needed to run the downloaded tool.
 
 If you download or clone the whole repository instead, open `tools/expression-formatter/index.html`. GitHub's file preview displays the source code, not the running tool.
 

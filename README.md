@@ -9,6 +9,6 @@ A free, browser-based tool for formatting, folding, and understanding Power Auto
 
 - [Read the guide and see the screenshot](tools/expression-formatter/README.md)
 - [Try it online](https://akmsft.github.io/power-automate/tools/expression-formatter/)
-- [Download the pilot release](https://github.com/akmsft/power-automate/releases/tag/expression-formatter-v0.2.6)
+- [Download the pilot release](https://github.com/akmsft/power-automate/releases/tag/expression-formatter-v0.2.7)
 
 The formatter is a community-built pilot, not an official Microsoft product. Its MIT license applies only to the formatter folder, not the existing solution packages in this repository.

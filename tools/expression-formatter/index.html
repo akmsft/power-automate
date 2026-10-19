@@ -928,7 +928,7 @@ Community-built tool. Not an official Microsoft product.
           <button id="warning-badge" type="button" aria-controls="warning-popover" aria-expanded="false" hidden>0 warnings</button>
         </div>
         <div class="source-editor">
-          <textarea id="source" spellcheck="false" aria-label="Expression to format" placeholder="@if(equals(triggerBody()?['status'], 'Ready'), concat('Hello ', variables('name')), 'Not ready')"></textarea>
+          <textarea id="source" spellcheck="false" aria-label="Expression to format" placeholder="if(equals(triggerBody()?['status'], 'Ready'), concat('Hello ', variables('name')), 'Not ready')"></textarea>
           <div id="source-line-gutter" class="source-line-gutter" aria-hidden="true"><div>1</div></div>
           <div id="source-line-measure" class="source-line-measure" aria-hidden="true"></div>
           <pre id="source-mirror" class="source-mirror" aria-hidden="true" hidden></pre>
@@ -1012,7 +1012,7 @@ Community-built tool. Not an official Microsoft product.
 
     <footer class="footer-note">
       <span>Custom tool for Microsoft Power Automate. Not an official Microsoft product.</span>
-      <span class="footer-version" aria-label="Version 0.2.6, pilot">v0.2.6 (Pilot)</span>
+      <span class="footer-version" aria-label="Version 0.2.7, pilot">v0.2.7 (Pilot)</span>
     </footer>
   </main>
     <section id="warning-popover" class="warning-popover" role="region" aria-labelledby="warning-title" hidden>
@@ -1363,7 +1363,7 @@ Community-built tool. Not an official Microsoft product.
     let copyAttempt = 0;
     let copyFeedbackTimer = null;
     const sampleExpression =
-      "@if(equals(triggerBody()?['status'], 'Ready'), concat('Hello ', variables('name')), 'Not ready')";
+      "if(equals(triggerBody()?['status'], 'Ready'), concat('Hello ', variables('name')), 'Not ready')";
 
     function matchingClose(open) {
       return { "(": ")", "[": "]", "{": "}" }[open];
