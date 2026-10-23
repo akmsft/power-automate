@@ -1,0 +1,42 @@
+name: Update expression formatter latest download
+
+# When a versioned expression-formatter release is published, copy its HTML file
+# to the rolling "expression-formatter-latest" release so the stable download
+# link always serves the newest version.
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Versioned release tag to publish as latest (for example expression-formatter-v0.2.7)"
+        required: true
+
+permissions:
+  contents: write
+
+env:
+  ASSET: power-automate-expression-formatter.html
+  LATEST_TAG: expression-formatter-latest
+
+jobs:
+  update-latest:
+    if: github.event_name == 'workflow_dispatch' || startsWith(github.event.release.tag_name, 'expression-formatter-v')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download the asset from the versioned release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SOURCE_TAG: ${{ github.event.inputs.tag || github.event.release.tag_name }}
+        run: |
+          set -euo pipefail
+          gh release download "$SOURCE_TAG" --repo "$GITHUB_REPOSITORY" --pattern "$ASSET" --dir .
+          test -s "$ASSET"
+
+      - name: Replace the asset on the latest release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh release upload "$LATEST_TAG" "$ASSET" --repo "$GITHUB_REPOSITORY" --clobber
